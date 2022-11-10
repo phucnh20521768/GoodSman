@@ -1,6 +1,18 @@
-# Getting Started with Create React App
+## **© 2022 University of Information Technology / CompuStore Project**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### **1. THÀNH VIÊN THAM GIA**
+
+<details>
+  <summary>Thông tin nhóm phát triển</summary>
+
+| STT | MSSV     | HỌ VÀ TÊN                                                                  | LỚP      | VAI TRÒ     |
+| --- | -------- | -------------------------------------------------------------------------- | -------- | ----------- |
+| 1   | 20521008 | [Phan Xuân Quang](https://github.com/phanxuanquang "Phan Xuân Quang")      | KTPM2020 | Trưởng nhóm |
+| 2   | 20521956 | [Trần Văn Thiệt](https://github.com/MiMi-Yup "Trần Văn Thiệt")             | KTPM2020 | Thành viên  |
+| 3   | 20521768 | [Nguyễn Hoàng Phúc](https://github.com/phucnh20521768 "Nguyễn Hoàng Phúc") | KTPM2020 | Thành viên  |
+| 4   | 20521205 | [Dín Hiền Dũng](https://github.com/dung-ovl "Dín Hiền Dũng")               | KTPM2020 | Thành viên  |
+
+</details>
 
 ## Available Scripts
 
@@ -38,33 +50,3 @@ If you aren't satisfied with the build tool and configuration choices, you can `
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

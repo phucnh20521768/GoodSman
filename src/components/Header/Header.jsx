@@ -47,14 +47,14 @@ function Header() {
                 </ul>
               
               <div className='nav-icons'>
-                <span><i className="ri-search-line nav-icon"></i></span>
+                <span><i className="ri-search-line icon"></i></span>
                 <span className='position-relative'>
                   <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">9
                     <span className="visually-hidden">cart</span>
                   </span>
-                  <i className="ri-shopping-cart-2-fill nav-icon"></i>
+                  <i className="ri-shopping-cart-2-fill icon"></i>
                 </span>
-                <span><i className="ri-user-fill nav-icon"></i></span>
+                <span><i className="ri-user-fill icon"></i></span>
               </div>
             </div>
         </Row>

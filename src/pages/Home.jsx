@@ -7,7 +7,7 @@ function Home() {
   return (
     <Helmet title={"Home"}>
       <section className='hero-section'>
-      <div class="bg-hero"></div>
+      <div className="bg-hero"></div>
         <Container >
           <Row>
             <Col lg='5' md='5'>

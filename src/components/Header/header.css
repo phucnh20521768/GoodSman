@@ -1,0 +1,52 @@
+
+
+.header {
+    width: 100%;
+    background-color: var(--hero-bg);
+}
+
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+}
+
+.logo img {
+    width: 144px;
+    height: 36px;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    column-gap: 2.7rem;
+}
+
+.nav-link.active {
+    font-weight: bold;
+    border-bottom: 2px solid;
+    color: var(--primary-color-dark);
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    column-gap: 2.7rem;
+}
+
+.nav-icons {
+    display: flex;
+    align-items: center;
+    column-gap: 2rem;
+}
+
+.nav-icon {
+    font-size: 1.3rem;
+}

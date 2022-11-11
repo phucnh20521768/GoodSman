@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Row, } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
-import logo from '../../assets/images/logo-1.png'
+import logo from '../../assets/images/Logo.png'
 import './header.css'
 
 const nav_links = [

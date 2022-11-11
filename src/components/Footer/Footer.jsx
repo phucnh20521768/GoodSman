@@ -2,7 +2,7 @@ import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 import './footer.css'
-import logo from '../../assets/images/logo-1.png'
+import logo from '../../assets/images/Logo.png'
 
 function Footer() {
   return (
@@ -13,7 +13,7 @@ function Footer() {
             <div className='logo'>
                 <NavLink to='home'><img src={logo}  alt='logo' /></NavLink>
             </div>
-            <ul className='d-flex justify-content-start gap-4 p-1'>
+            <ul className='d-flex justify-content-start gap-4 my-2'>
               <li>
                 <a href='#'>
                   <span><i class="ri-facebook-box-fill icon"></i></span>
@@ -41,40 +41,40 @@ function Footer() {
               </li>
             </ul>
             <div>
-              <h6 className='p-1 pb-3 fw-bold'>Address</h6>
-              <p className='p-1'>+123 654 987</p>
-              <p className='p-1'>877  The Bronx, NY</p>
-              <p className='p-1'>14568, USA</p>
+              <h6 className='pb-3 fw-bold'>Address</h6>
+              <p className=''>+123 654 987</p>
+              <p className=''>877  The Bronx, NY</p>
+              <p className=''>14568, USA</p>
             </div>
           </Col>
           <Col>
-              <h6 className='p-1 pb-3 fw-bold'>My account</h6>
-              <p className='p-1'>Sign in</p>
-              <p className='p-1'>Register</p>
-              <p className='p-1'>Other status</p>
+              <h6 className='pb-3 fw-bold'>My account</h6>
+              <p className=''>Sign in</p>
+              <p className=''>Register</p>
+              <p className=''>Other status</p>
           </Col>
           <Col>
-              <h6 className='p-1 pb-3 fw-bold'>Help</h6>
-              <p className='p-1'>Shipping</p>
-              <p className='p-1'>Return</p>
-              <p className='p-1'>Sizing</p>
+              <h6 className='pb-3 fw-bold'>Help</h6>
+              <p className=''>Shipping</p>
+              <p className=''>Return</p>
+              <p className=''>Sizing</p>
           </Col>
           <Col>
-              <h6 className='p-1 pb-3 fw-bold'>Shop</h6>
-              <p className='p-1'>All Product</p>
-              <p className='p-1'>Bedroom</p>
-              <p className='p-1'>Dinnning Room</p>
+              <h6 className=' pb-3 fw-bold'>Shop</h6>
+              <p className=''>All Product</p>
+              <p className=''>Bedroom</p>
+              <p className=''>Dinnning Room</p>
           </Col>
           <Col>
-              <h6 className='p-1 pb-3 fw-bold'>Legal Stuff</h6>
-              <p className='p-1'>Shipping & Delivery</p>
-              <p className='p-1'>Terms & Conditions</p>
-              <p className='p-1'>Privacy & Pocicy</p>
+              <h6 className='pb-3 fw-bold'>Legal Stuff</h6>
+              <p className=''>Shipping & Delivery</p>
+              <p className=''>Terms & Conditions</p>
+              <p className=''>Privacy & Pocicy</p>
           </Col>
         </Row>
         <Row className='py-4'>
           <Col>
-            <p className='p-1'>Copyright &#169;2022 INWOOD. ALL Rights Reserved</p>
+            <p className=''>Copyright &#169;2022 INWOOD. ALL Rights Reserved</p>
           </Col>
         </Row>
       </Container>

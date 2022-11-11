@@ -1,14 +1,20 @@
 /* google fonts */
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 /*  css variables */
 :root {
   --card-bg-01: #fdefe6;
   --card-bg-02: #d6e5fb;
   --card-bg-03: #ceebe9;
-  --card-bg-04: #e2f2b2;
-  --primary-color: #0a1d37;
-  --hero-bg: #d6e5fb;
+  --card-bg-04: #14160f;
+  --primary-color: #70908B;
+  --primary-color-dark: #07484A;
+  --secondary-color-0: #FDFBF8;
+  --secondary-color-1: #FFF4E7;
+  --secondary-color-2: #EEEBFF;
+  --secondary-color-3: #E0EFF6;
+  --secondary-color-4: #CAF3E5;
+  --hero-bg: #C4C4C4;
   --heading-fontSize: 2rem;
   --small-text-color: #999;
   --heading-text-color: #0a1d37;
@@ -22,7 +28,9 @@
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Playfair Display', serif;
+  color: var(--primary-color-dark);
+  font-size: 1.1rem;
 }
 
 h1,

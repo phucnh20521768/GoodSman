@@ -16,7 +16,6 @@ function Routers() {
         <Route path='shop' element={<Shop />}/>
         <Route path='checkout' element={<Checkout />}/>
         <Route path='shop/:id' element={<ProductDetails />}/>
-
     </Routes>
   )
 }

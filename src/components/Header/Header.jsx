@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Row, Modal, ModalBody } from 'react-bootstrap'
+import { Container, Row, Navbar, Nav, Offcanvas, Col, Modal, ModalBody } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 import logo from '../../assets/images/Logo.png'
 import './header.css'
@@ -51,31 +51,47 @@ class Header extends React.Component {
       <header className='header'>
         <Container>
           <Row>
-            <div className='nav-wrapper'>
-              <div className='logo'>
-                <NavLink to='home'><img src={logo} alt='logo' /></NavLink>
-              </div>
-              <ul className='nav'>
-                {
-                  nav_links.map((item, index) => (
-                    <li className='nav-item' key={index}>
-                      <NavLink className={(navClass) => navClass.isActive ? 'nav-link active' : ''} to={item.path}>{item.display}</NavLink>
-                    </li>
-                  ))
-                }
-              </ul>
+            <Col>
+              <Navbar key='lg' expand='lg' className='my-2'>
+                <Navbar.Brand href="#">
+                  <div className='logo'>
+                    <NavLink to='home'><img src={logo} className="img-fluid" alt='logo' /></NavLink>
+                  </div>
+                </Navbar.Brand>
+                <Navbar.Toggle className='nav-toggler' aria-controls={`offcanvasNavbar-expand-lg`} />
+                <Navbar.Offcanvas
+                  id={`offcanvasNavbar-expand-md`}
+                  aria-labelledby={`offcanvasNavbarLabel-expand-lg`}
+                  placement="end"
+                >
+                  <Offcanvas.Header closeButton>
+                    <Offcanvas.Title id={`offcanvasNavbarLabel-expand-lg`}>
+                      Menu
+                    </Offcanvas.Title>
+                  </Offcanvas.Header>
+                  <Offcanvas.Body>
+                    <Nav className="justify-content-center flex-grow-1 pe-3 nav">
+                      {
+                        nav_links.map((item, index) => (
+                          <NavLink className={(navClass) => navClass.isActive ? 'nav-link active' : ''} to={item.path}>{item.display}</NavLink>
+                        ))
+                      }
+                    </Nav>
 
-              <div className='nav-icons'>
-                <span><i className="ri-search-line icon"></i></span>
-                <span className='position-relative'>
-                  <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">9
-                    <span className="visually-hidden">cart</span>
+                  </Offcanvas.Body>
+                </Navbar.Offcanvas>
+                <div className='nav-icons'>
+                  <span><i className="ri-search-line icon"></i></span>
+                  <span className='position-relative'>
+                    <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">9
+                      <span className="visually-hidden">cart</span>
+                    </span>
+                    <i className="ri-shopping-cart-2-fill icon"></i>
                   </span>
-                  <i className="ri-shopping-cart-2-fill icon"></i>
-                </span>
-                <span><i className="ri-user-fill icon" onClick={this.showUserModal}></i></span>
-              </div>
-            </div>
+                  <span><i className="ri-user-fill icon" onClick={this.showUserModal}></i></span>
+                </div>
+              </Navbar>
+            </Col>
           </Row>
         </Container>
         <Modal show={this.state.showUserModal} onHide={this.closeUserModal}

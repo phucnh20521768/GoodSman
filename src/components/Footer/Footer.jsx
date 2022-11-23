@@ -80,7 +80,7 @@ function Footer() {
     <footer className='footer'>
       <Container className='pt-5 pb-3'>
         <Row>
-          <Col lg='4'>
+          <Col sm='12' lg='4'>
             <div className='logo'>
                 <Link to='home'><img src={logo}  alt='logo' /></Link>
             </div>
@@ -122,7 +122,7 @@ function Footer() {
           </Col>
           {
             footer_links.map((item0, index0) => (
-              <Col key={index0}>
+              <Col key={index0} xs={6} lg={true}>
                 <h6 className='pb-3 fw-bold'>{item0.title}</h6>
                 <ul>
                   {item0.links.map((item1, index1) => (

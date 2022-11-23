@@ -36,10 +36,10 @@ function Header() {
           <Navbar key='lg' expand='lg' className='my-2'>
             <Navbar.Brand href="#">
             <div className='logo'>
-                <NavLink to='home'><img src={logo}  alt='logo' /></NavLink>
+                <NavLink to='home'><img src={logo} className="img-fluid"  alt='logo' /></NavLink>
               </div>
             </Navbar.Brand>
-            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-lg`} />
+            <Navbar.Toggle className='nav-toggler' aria-controls={`offcanvasNavbar-expand-lg`} />
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-md`}
               aria-labelledby={`offcanvasNavbarLabel-expand-lg`}

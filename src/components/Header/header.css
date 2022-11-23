@@ -1,5 +1,3 @@
-
-
 .header {
     width: 100%;
     background-color: var(--hero-bg);
@@ -47,3 +45,6 @@
     column-gap: 2rem;
 }
 
+.icon:hover:not(.ri-lock-2-line) {
+    color: white;
+}

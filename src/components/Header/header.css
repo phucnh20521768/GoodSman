@@ -35,11 +35,6 @@
     color: var(--primary-color-dark);
 }
 
-.menu {
-    display: flex;
-    align-items: center;
-    column-gap: 2.7rem;
-}
 
 .nav-icons {
     display: flex;
@@ -47,3 +42,18 @@
     column-gap: 2rem;
 }
 
+.icon {
+    font-size: 1.675rem;
+}
+
+@media (max-width: 575.98px) {
+    .nav-icons {
+        display: none;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .nav-link {
+        margin: 1.125rem;
+    }
+}

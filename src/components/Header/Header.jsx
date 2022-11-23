@@ -2,6 +2,7 @@ import React from 'react'
 import { Container, Row, Navbar, Nav, Offcanvas, Col, Modal, ModalBody } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 import logo from '../../assets/images/Logo.png'
+import icon_google from '../../assets/images/icon_google.png'
 import './header.css'
 
 const nav_links = [
@@ -102,8 +103,8 @@ class Header extends React.Component {
             <Container>
               <div className='row p-4'>
                 <div className='col-12 ri-lock-2-line icon text-center'></div>
-                <p className='col-12 text-center'>Hey, chào mừng quy trờ lại!!!</p>
-                <button type='button' className='col-12 my-3 btn btn-primary'><p><span className='ri-google-fill icon align-middle px-3'></span>Đăng nhập bằng Google</p></button>
+                <p className='col-12 text-center'>Hey, chào mừng quay trờ lại!!!</p>
+                <button type='button' className='col-12 my-3 btn btn-primary'><p><img src={icon_google} alt="" className='img-fluid col-1 mx-1' /> Đăng nhập bằng Google</p></button>
                 <div className="d-flex">
                   <hr className="my-auto flex-grow-1"></hr>
                   <div className="px-3">Or</div>

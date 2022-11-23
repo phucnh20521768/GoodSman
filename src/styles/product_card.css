@@ -1,19 +1,29 @@
 .product-item {
     width: 20rem;
+    cursor: pointer;
 }
 
 .product-item__img {
     padding: 3rem 3.825rem 1rem 3.825rem;
+    height: 200px;
+    display: block;
+    margin: 0 auto;
 }
 
 .product-item__des {
     font-family:'Open Sans', sans-serif;
 }
 
+
+.product-item__des--cate {
+    opacity: 0.8;
+    text-transform: capitalize;
+}
+
 .product-item__des--title {
     opacity: 0.65;
     font-weight: 700;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
 }
 
 .product-item__des--value {
@@ -21,3 +31,10 @@
     font-weight: 600;
     font-size: 1.1rem;
 }
+
+.product-item__des--icon i {
+    padding: 5px;
+    border-radius   : 50%;
+    background-color: var(--black);
+    color: var(--white);
+} 

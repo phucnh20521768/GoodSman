@@ -53,8 +53,8 @@ function Header() {
               <Offcanvas.Body>
                 <Nav className="justify-content-center flex-grow-1 pe-3 nav">
                 {
-              nav_links.map((item, index) =>(
-                <NavLink className={(navClass) => navClass.isActive ? 'nav-link active' : ''}  to={item.path}>{item.display}</NavLink>
+                nav_links.map((item, index) =>(
+                <NavLink key={index} className={(navClass) => navClass.isActive ? 'nav-link active' : ''}  to={item.path}>{item.display}</NavLink>
               ))
             }
                 </Nav>

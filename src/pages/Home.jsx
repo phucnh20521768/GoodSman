@@ -6,6 +6,7 @@ import Helmet from '../components/Helmet/Helmet'
 import ProductList from '../components/UI/ProductList'
 import '../styles/home.css'
 import product from '../assets/data/product' 
+import {Test} from '../database/testConnection.js'
 
 function Home() {
   const [data, setData] = useState(product);
@@ -26,7 +27,7 @@ function Home() {
               <div className='hero-content shadow-lg rounded'>
                 <h1 className='fw-bold display-6'>HIỆN THỰC HÓA ƯỚC MƠ CÔNG NGHỆ</h1>
                 <p className='my-5 h6'>Đổi mới sáng tạo, truy cầu sự hoàn hảo</p>
-                <Link to='/shop'><motion.button whileTap={{scale: 1.2}} className='btn btn-primary btn-lg'>Mua hàng</motion.button></Link>
+                <Link to='/shop'><motion.button whileTap={{scale: 1.2}} className='btn btn-primary btn-lg' onClick={Test}>Mua hàng</motion.button></Link>
               </div>
             </Col>
           </Row>

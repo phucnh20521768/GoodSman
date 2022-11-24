@@ -1,5 +1,3 @@
-
-
 .header {
     width: 100%;
     background-color: var(--hero-bg);
@@ -63,4 +61,8 @@
     .nav-link {
         margin: 1.125rem;
     }
+}
+
+.icon:hover:not(.ri-lock-2-line) {
+    color: white;
 }

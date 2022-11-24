@@ -3,6 +3,7 @@ import { Container, Row, Navbar, Nav, Offcanvas, Col } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/images/Logo.png";
 import AccountModal from "../Modal/AccountModal";
+import CartModal from "../Modal/CartModal";
 import "./header.css";
 
 const nav_links = [
@@ -76,17 +77,17 @@ function Header() {
               </Navbar.Offcanvas>
               <div className="nav-icons">
                 <span>
-                  <i className="ri-search-line icon"></i>
+                  <i className="ri-search-line icon cursor-pointer"></i>
                 </span>
                 <span className="position-relative">
                   <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">
                     9<span className="visually-hidden">cart</span>
                   </span>
-                  <i className="ri-shopping-cart-2-fill icon"></i>
+                  <i className="ri-shopping-cart-2-fill icon cursor-pointer"></i>
                 </span>
                 <span>
                   <i
-                    className="ri-user-fill icon"
+                    className="ri-user-fill icon cursor-pointer"
                     onClick={() => setShowModal(true)}
                   ></i>
                 </span>
@@ -96,6 +97,7 @@ function Header() {
         </Row>
       </Container>
       <AccountModal props={[showUserModal, setShowModal]} />
+      <CartModal />
     </header>
   );
 }

@@ -1,0 +1,27 @@
+.bg-primary-section-summary {
+    background-color: var(--primary-color-dark);
+}
+
+.rounded-summary {
+    border-bottom-right-radius: .4rem;
+}
+
+@media (max-width : 992px) {
+    .rounded-summary {
+        border-bottom-left-radius: .4rem;
+        border-bottom-right-radius: .4rem;
+    }
+}
+
+.btn-checkout {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: 0;
+    padding: 1rem 3rem;
+}
+
+.btn-checkout:hover {
+    opacity: 1;
+    color: var(--black);
+    background-color: var(--white);
+}

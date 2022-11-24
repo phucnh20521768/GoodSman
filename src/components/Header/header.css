@@ -66,3 +66,7 @@
 .icon:hover:not(.ri-lock-2-line) {
     color: white;
 }
+
+.cursor-pointer{
+    cursor: pointer;
+}

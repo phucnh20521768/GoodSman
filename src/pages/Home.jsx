@@ -6,6 +6,7 @@ import Helmet from "../components/Helmet/Helmet";
 import ProductList from "../components/UI/ProductList";
 import "../styles/home.css";
 import product from "../assets/data/product";
+import { Test } from "../database/testConnection.js";
 
 function Home() {
   const [data, setData] = useState(product);
@@ -32,7 +33,7 @@ function Home() {
                 </p>
                 <Link to="/shop">
                   <motion.button
-                    whileTap={{ transform: `translateX(5px)` }}
+                    whileTap={{ scale: 1.2 }}
                     className="btn btn-primary btn-lg"
                   >
                     Mua hàng

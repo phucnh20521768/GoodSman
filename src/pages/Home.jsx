@@ -5,16 +5,23 @@ import { motion } from "framer-motion";
 import Helmet from "../components/Helmet/Helmet";
 import ProductList from "../components/UI/ProductList";
 import "../styles/home.css";
-import product from "../assets/data/product";
-import { Test } from "../database/testConnection.js";
+import { Upload } from "../database/testConnection.js";
+import { collection, getDocs } from "firebase/firestore/lite";
+import { firebaseFirestore } from '../database/InstanceFiresbase'
+import { ProductModel } from '../database/Models/ProductModel.ts'
+
+async function getProducts() {
+  const mCollection = collection(firebaseFirestore, '/products').withConverter(ProductModel.productConvert)
+  const mSnapshot = await getDocs(mCollection)
+  const mDocs = mSnapshot.docs.map(doc => doc.data())
+  return mDocs
+}
 
 function Home() {
-  const [data, setData] = useState(product);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    const trendingProduct = product.filter((item) => item.isTrending === true);
-
-    setData(trendingProduct);
+    getProducts().then((products) => setData(products))
   }, []);
 
   return (
@@ -35,6 +42,7 @@ function Home() {
                   <motion.button
                     whileTap={{ scale: 1.2 }}
                     className="btn btn-primary btn-lg"
+                    onClick={Upload}
                   >
                     Mua hàng
                   </motion.button>

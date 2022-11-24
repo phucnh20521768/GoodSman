@@ -12,7 +12,7 @@ function ProductCard({ item }) {
           <motion.img
             whileHover={{ scale: 1.2 }}
             className="product-item__img img-fluid"
-            src={item.imgUrl}
+            src={item.imgThumb}
           />
         </Link>
         <Card.Body className="product-item__des my-2">

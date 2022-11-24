@@ -25,3 +25,16 @@
     padding: 2rem;
 }
  
+.product-trending::-webkit-scrollbar {
+    width: 2rem;
+}
+.product-trending::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    width: 1px;
+    background-color: var(--primary-color-dark);
+}
+.product-trending::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: var(--primary-color);
+    width: 1px;
+}

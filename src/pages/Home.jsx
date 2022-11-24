@@ -50,14 +50,22 @@ function Home() {
           <Row></Row>
         </Container>
       </section>
-      <section className="product">
+      <section className="product-trending">
         <Container>
           <Row className="text-center mb-5">
             <h1 className="fw-bold display-6">Sản phẩm được ưu chuộng</h1>
           </Row>
-          <Row className="">
+          <Row className="mb-5">
             <ProductList data={data} />
           </Row>
+        </Container>
+      </section>
+      <section className="special-discount">
+        <Container>
+          <Row className="text-center mb-5">
+            <h1 className="fw-bold display-6">Khuyến mãi đặc biệt</h1>
+          </Row>
+          <div></div>
         </Container>
       </section>
     </Helmet>

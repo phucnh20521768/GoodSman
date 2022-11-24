@@ -2,19 +2,31 @@ import 'firebase/firestore/lite'
 import { DocumentData, QueryDocumentSnapshot, WithFieldValue } from 'firebase/firestore/lite';
 
 export class ProductModel {
-    constructor(readonly name_product: string, readonly price: number, readonly images: [], readonly description: object) { }
+    constructor(
+        readonly id: string,
+        readonly productName: string,
+        readonly images: [],
+        readonly cateogry: string,
+        readonly price: number,
+        readonly isTrending: boolean,
+        readonly shortDesc: string,
+        readonly description: object,
+        readonly avgRating: number,
+        readonly reviews: []) { }
 
     static postConverter = {
         toFirestore(product: WithFieldValue<ProductModel>): DocumentData {
             return {
-                name_product: this.name_product,
-                price: this.price,
+                id: this.id,
+                productName: this.productName,
                 images: this.images,
-                description: this.description
-                // description: {
-                //     content: "",
-                //     head: ""
-                // }
+                category: this.category,
+                price: this.price,
+                isTrending: this.isTrending,
+                shortDesc: this.shortDesc,
+                description: this.description,
+                reviews: this.reviews,
+                avgRating: this.avgRating,
             }
         },
         fromFirestore(
@@ -22,7 +34,16 @@ export class ProductModel {
             options
         ): ProductModel {
             const data = snapshot.data()!;
-            return new ProductModel(data.name_product, data.price, data.images, data.description);
+            return new ProductModel(data.id,
+                data.productName,
+                data.images,
+                data.category,
+                data.price,
+                data.isTrending,
+                data.shortDesc,
+                data.description,
+                data.avgRating,
+                data.reviews);
         }
     }
 }

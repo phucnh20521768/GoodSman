@@ -74,7 +74,7 @@ class Header extends React.Component {
                     <Nav className="justify-content-center flex-grow-1 pe-3 nav">
                       {
                         nav_links.map((item, index) => (
-                          <NavLink className={(navClass) => navClass.isActive ? 'nav-link active' : ''} to={item.path}>{item.display}</NavLink>
+                          <NavLink key={index} className={(navClass) => navClass.isActive ? 'nav-link active' : ''} to={item.path}>{item.display}</NavLink>
                         ))
                       }
                     </Nav>

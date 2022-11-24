@@ -2,7 +2,15 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from 'firebase/firestore/lite';
 import { getStorage } from 'firebase/storage';
 
-const firebaseConfig = require("../../package.json").firebaseConfig;
+const firebaseConfig = {
+    apiKey: "AIzaSyCh04d8f4LTDS_Eimlvyts1Yaa74dkZI18",
+    authDomain: "goodsman-da157.firebaseapp.com",
+    projectId: "goodsman-da157",
+    storageBucket: "goodsman-da157.appspot.com",
+    messagingSenderId: "458144098180",
+    appId: "1:458144098180:web:5b6d479c860034ca4a9fd1"
+}
+
 const firebaseApp = initializeApp(firebaseConfig);
 
 let _firebaseFirestore = null

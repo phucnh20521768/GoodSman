@@ -7,10 +7,12 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.2.2",
+    "framer-motion": "^7.6.9",
     "firebase": "^9.14.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.6.0",
     "react-dom": "^18.2.0",
+    "react-horizontal-scrolling-menu": "^3.2.3",
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
     "remixicon": "^2.5.0",
@@ -27,14 +29,6 @@
       "react-app",
       "react-app/jest"
     ]
-  },
-  "firebaseConfig": {
-    "apiKey": "AIzaSyCh04d8f4LTDS_Eimlvyts1Yaa74dkZI18",
-    "authDomain": "goodsman-da157.firebaseapp.com",
-    "projectId": "goodsman-da157",
-    "storageBucket": "goodsman-da157.appspot.com",
-    "messagingSenderId": "458144098180",
-    "appId": "1:458144098180:web:5b6d479c860034ca4a9fd1"
   },
   "browserslist": {
     "production": [

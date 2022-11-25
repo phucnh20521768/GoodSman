@@ -18,7 +18,7 @@ function ProductCard({ item, index }) {
             src={item.imgUrl}
           />
         </Link>
-        <Card.Body className="product-item__des my-2">
+        <Card.Body className="product-item__des">
           <Link to="/shop/id">
             <Card.Title className="product-item__des--title">
               {item.productName}

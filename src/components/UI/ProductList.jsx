@@ -11,7 +11,10 @@ const Arrows = () => (
 
 function ProductList({ data }) {
   return (
-    <ScrollMenu Footer={Arrows}>
+    <ScrollMenu
+      scrollContainerClassName="py-4 px-2 scrollbar-spe"
+      Footer={Arrows}
+    >
       {data.map((item, index) => (
         <ProductCard itemId={item.id} key={item.id} item={item} index={index} />
       ))}

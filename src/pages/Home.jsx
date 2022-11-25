@@ -6,25 +6,27 @@ import Helmet from "../components/Helmet/Helmet";
 import ProductList from "../components/UI/ProductList";
 import "../styles/home.css";
 import product from "../assets/data/product";
-import { Test } from "../database/testConnection.js";
+import Clock from "../components/UI/Clock";
 
 function Home() {
-  const [data, setData] = useState(product);
-
+  const [trendingProducts, setTrendingProducts] = useState([]);
+  const bestSellProduct = product[Math.floor(Math.random() * product.length)];
   useEffect(() => {
-    const trendingProduct = product.filter((item) => item.isTrending === true);
+    const filteredTrendingProducts = product.filter(
+      (item) => item.isTrending === true
+    );
 
-    setData(trendingProduct);
+    setTrendingProducts(filteredTrendingProducts);
   }, []);
 
   return (
     <Helmet title={"Home"}>
       <section className="hero-section">
-        <div className="bg-hero"></div>
+        <div className="hero-section__bg"></div>
         <Container>
           <Row>
-            <Col xl="5" sm="8">
-              <div className="hero-content shadow-lg rounded">
+            <Col xl="5" md="8">
+              <div className="hero-section__content shadow-lg rounded">
                 <h1 className="fw-bold display-6">
                   HIỆN THỰC HÓA ƯỚC MƠ CÔNG NGHỆ
                 </h1>
@@ -52,20 +54,56 @@ function Home() {
       </section>
       <section className="product-trending">
         <Container>
-          <Row className="text-center mb-5">
+          <Row className="text-center my-5">
             <h1 className="fw-bold display-6">Sản phẩm được ưu chuộng</h1>
           </Row>
           <Row className="mb-5">
-            <ProductList data={data} />
+            <ProductList data={trendingProducts} />
           </Row>
         </Container>
       </section>
-      <section className="special-discount">
+      <section className="product-special-discount">
         <Container>
-          <Row className="text-center mb-5">
+          <Row className="text-center my-5">
             <h1 className="fw-bold display-6">Khuyến mãi đặc biệt</h1>
           </Row>
-          <div></div>
+          <Row className="text-center">
+            <Col></Col>
+          </Row>
+        </Container>
+      </section>
+      <section className="product-best-sell">
+        <Container>
+          <Row className="align-items-center py-5">
+            <Col lg="6">
+              <div className="product-best-sell__content">
+                <div className="product-best-sell__content--title">
+                  <h4 className="fs-5 mb-2">Limited Offers</h4>
+                  <h3 className="fs-3 mb-3">Quality Product</h3>
+                </div>
+                <div className="product-best-sell__content--clock my-4">
+                  <Clock />
+                </div>
+                <Link to="/shop">
+                  <motion.button
+                    whileTap={{ scale: 1.2 }}
+                    className="btn btn-primary btn-lg bg-white text-black opacity-100 fw-bold"
+                  >
+                    Ghé shop ngay!
+                  </motion.button>
+                </Link>
+              </div>
+            </Col>
+            <Col lg="6">
+              <div className="product-best-sell__img text-end">
+                <img
+                  src={bestSellProduct.imgUrl}
+                  className="img-fluid"
+                  alt=""
+                ></img>
+              </div>
+            </Col>
+          </Row>
         </Container>
       </section>
     </Helmet>

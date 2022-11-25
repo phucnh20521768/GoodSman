@@ -1,37 +1,33 @@
 import { async } from "@firebase/util";
 import { signInWithPopup, GoogleAuthProvider, getAuth, signOut } from "firebase/auth";
 import { firebaseApp } from "../InstanceFiresbase";
+import { SignIn as login, SignOut as logout } from './Auth.js'
+
 
 const provider = new GoogleAuthProvider();
 const auth = getAuth()
-let _user = null
-let _token = null
-
-let user = () => _user
-
-let token = () => _token
 
 async function SignOut() {
     try {
         await signOut(auth)
-        _user = null
-        _token = null
+        logout()
     } catch (error) {
         console.log("error-logout")
+        return false
     }
-    return { user, token }
+    return true
 }
 
 async function SignIn() {
     try {
         let userCredential = await signInWithPopup(auth, provider)
         const credential = GoogleAuthProvider.credentialFromResult(userCredential)
-        _user = userCredential.user
-        _token = credential.accessToken
+        login(userCredential.user, credential.accessToken)
     } catch (error) {
         console.log("error login")
+        return false
     }
-    return { user, token }
+    return true
 }
 
-export { user, token, SignIn, SignOut }
+export { SignIn, SignOut }

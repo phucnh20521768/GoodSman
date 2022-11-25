@@ -4,22 +4,39 @@ import { Container, Modal, ModalBody } from "react-bootstrap";
 import {
   SignIn as SignInGoogle,
   SignOut as SignOutGoogle,
-} from "../../database/Auth/GoogleAuth";
+} from "../../../database/Auth/GoogleAuth";
 import {
   SignIn as SignInPassword,
   SignOut as SignOutPassword,
   CreateAccount,
-} from "../../database/Auth/PasswordAuth";
+} from "../../../database/Auth/PasswordAuth";
 
-import icon_google from "../../assets/images/icon_google.png";
-function AccountModal({ props }) {
+import icon_google from "../../../assets/images/icon_google.png";
+function AccountModal(props) {
   const [inputEmail, setEmail] = useState(null);
   const [inputPassword, setPassword] = useState(null);
 
+  const signInGoogle = async () => {
+    let result = await SignInGoogle()
+    if (result)
+      props.close()
+  }
+
+  const signInPassword = async () => {
+    let result = await SignInPassword(inputEmail, inputPassword)
+    if (result)
+      props.close()
+  }
+
+  const enterKeyUp = (e) => {
+    if (e.key == "Enter")
+      signInPassword()
+  }
+
   return (
     <Modal
-      show={props[0]}
-      onHide={() => props[1](false)}
+      show={props.show}
+      onHide={() => props.close()}
       size="md"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -34,11 +51,7 @@ function AccountModal({ props }) {
             <button
               type="button"
               className="col-12 my-3 btn btn-primary"
-              onClick={() =>
-                SignInGoogle().then((result) => {
-                  if (result.user() != null) props[1](false);
-                })
-              }
+              onClick={signInGoogle}
             >
               <p>
                 <img
@@ -67,14 +80,11 @@ function AccountModal({ props }) {
               id="password"
               placeholder="Mật khẩu"
               onChange={(e) => setPassword(e.target.value)}
+              onKeyUp={enterKeyUp}
             ></input>
             <button
               className="col-12 my-3 btn btn-primary text-uppercase"
-              onClick={() =>
-                SignInPassword(inputEmail, inputPassword).then((result) => {
-                  if (result.user() != null) props[1](false);
-                })
-              }
+              onClick={signInPassword}
             >
               <strong>Đăng nhập</strong>
             </button>

@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Container, Row, Navbar, Nav, Offcanvas, Col } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/images/Logo.png";
-import AccountModal from "../Modal/AccountModal";
-import CartModal from "../Modal/CartModal";
+import AccountModal from "../Modal/Account/AccountModal";
+import CartModal from "../Modal/Cart/CartModal";
 import "./header.css";
 
 const nav_links = [
@@ -29,8 +29,38 @@ const nav_links = [
   },
 ];
 
+const mockData = [
+  {
+    id: '01',
+    name: 'Dell Precision 7770',
+    desc: 'Intel Core i7-12700H, 16GB DDR5 5200MHz',
+    quantity: 1,
+    pricePerUnit: 10
+  },
+  {
+    id: '02',
+    name: 'Dell Precision 7770',
+    desc: 'Intel Core i7-12700H, 16GB DDR5 5200MHz',
+    quantity: 1,
+    pricePerUnit: 20
+  },
+  {
+    id: '03',
+    name: 'Dell Precision 7770',
+    desc: 'Intel Core i7-12700H, 16GB DDR5 5200MHz',
+    quantity: 1,
+    pricePerUnit: 30
+  }
+]
+
 function Header() {
-  const [showUserModal, setShowModal] = useState(false);
+  const [showAccountModal, setShowAccountModal] = useState(false);
+  const [showCartModal, setShowCartModal] = useState(false);
+
+  const openAccountModal = () => setShowAccountModal(true)
+  const closeAccountModal = () => setShowAccountModal(false)
+  const openCartModal = () => setShowCartModal(true)
+  const closeCartModal = () => setShowCartModal(false)
 
   return (
     <header className="header">
@@ -83,12 +113,12 @@ function Header() {
                   <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">
                     9<span className="visually-hidden">cart</span>
                   </span>
-                  <i className="ri-shopping-cart-2-fill icon cursor-pointer"></i>
+                  <i className="ri-shopping-cart-2-fill icon cursor-pointer" onClick={openCartModal}></i>
                 </span>
                 <span>
                   <i
                     className="ri-user-fill icon cursor-pointer"
-                    onClick={() => setShowModal(true)}
+                    onClick={openAccountModal}
                   ></i>
                 </span>
               </div>
@@ -96,8 +126,8 @@ function Header() {
           </Col>
         </Row>
       </Container>
-      <AccountModal props={[showUserModal, setShowModal]} />
-      <CartModal />
+      <AccountModal show={showAccountModal} close={closeAccountModal} />
+      <CartModal show={showCartModal} close={closeCartModal} items={mockData} open={openAccountModal}/>
     </header>
   );
 }

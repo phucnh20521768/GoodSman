@@ -50,6 +50,20 @@ const mockData = [
     desc: 'Intel Core i7-12700H, 16GB DDR5 5200MHz',
     quantity: 1,
     pricePerUnit: 30
+  },
+  {
+    id: '04',
+    name: 'Dell Precision 7770',
+    desc: 'Intel Core i7-12700H, 16GB DDR5 5200MHz',
+    quantity: 1,
+    pricePerUnit: 10
+  },
+  {
+    id: '05',
+    name: 'Dell Precision 7770',
+    desc: 'Intel Core i7-12700H, 16GB DDR5 5200MHz',
+    quantity: 1,
+    pricePerUnit: 20
   }
 ]
 

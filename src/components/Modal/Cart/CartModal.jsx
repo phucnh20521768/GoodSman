@@ -74,6 +74,7 @@ function CartModal(props) {
             size="xl"
             aria-labelledby="contained-modal-title-vcenter"
             centered
+            scrollable={true}
         >
             <Modal.Header closeButton>
                 <Row className='col-lg-8 col-11 g-0 p-2'>
@@ -81,7 +82,7 @@ function CartModal(props) {
                     <span className='col-6 text-end'>{props.items.length} items</span>
                 </Row>
             </Modal.Header>
-            <Modal.Body className='p-0'>
+            <Modal.Body className='p-0 font-modal'>
                 <Container>
                     <Row>
                         <Row className='col-lg-8 col-12 g-0 p-2'>
@@ -92,8 +93,8 @@ function CartModal(props) {
                                 </>
                             )}
                         </Row>
-                        <Row className='col-lg-4 col-12 rounded-summary bg-primary-section-summary g-0 gy-lg-0 gy-2 p-3 text-white text-center'>
-                            <span>Summary</span>
+                        <Row className='col-lg-4 col-12 rounded-summary bg-primary-section-summary g-0 gy-lg-0 gy-2 p-3 text-white text-center max-height-summary'>
+                            <span className='h3'>Summary</span>
                             <Divide />
                             <span className='col-6'>{props.items.length} items</span>
                             <span className='col-6 '>{props.items.reduce((partitalSum, value) => partitalSum + value.quantity * value.pricePerUnit, 0)}</span>
@@ -116,7 +117,7 @@ function CartModal(props) {
                             <Divide />
                             <span className='col-6'>TOTAL PRICE</span>
                             <span className='col-6 '>$ 532.4</span>
-                            <button className='col-12 my-3 btn btn-checkout text-uppercase' onClick={checkout}>Checkout</button>
+                            <button className='col-12 btn btn-checkout text-uppercase' onClick={checkout}>Checkout</button>
                         </Row>
                     </Row>
                 </Container>

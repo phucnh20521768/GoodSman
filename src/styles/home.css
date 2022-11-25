@@ -35,6 +35,10 @@
     object-fit: contain;
     height: 20rem;
 }
+
+.product-services {
+    background-color: var(--secondary-color-3);
+}
  
 
 @media (max-width: 575.98px) {

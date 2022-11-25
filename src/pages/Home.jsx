@@ -7,15 +7,17 @@ import ProductList from "../components/UI/ProductList";
 import "../styles/home.css";
 import product from "../assets/data/product";
 import Clock from "../components/UI/Clock";
+import Services from "../services/Services";
+import serviceData from "../assets/data/servicesData";
 
 function Home() {
   const [trendingProducts, setTrendingProducts] = useState([]);
+  const services = serviceData;
   const bestSellProduct = product[Math.floor(Math.random() * product.length)];
   useEffect(() => {
     const filteredTrendingProducts = product.filter(
       (item) => item.isTrending === true
     );
-
     setTrendingProducts(filteredTrendingProducts);
   }, []);
 
@@ -54,17 +56,17 @@ function Home() {
       </section>
       <section className="product-trending">
         <Container>
-          <Row className="text-center my-5">
+          <Row className="text-center py-5">
             <h1 className="fw-bold display-6">Sản phẩm được ưu chuộng</h1>
           </Row>
-          <Row className="mb-5">
+          <Row className="">
             <ProductList data={trendingProducts} />
           </Row>
         </Container>
       </section>
       <section className="product-special-discount">
         <Container>
-          <Row className="text-center my-5">
+          <Row className="text-center py-5">
             <h1 className="fw-bold display-6">Khuyến mãi đặc biệt</h1>
           </Row>
           <Row className="text-center">
@@ -78,8 +80,8 @@ function Home() {
             <Col lg="6">
               <div className="product-best-sell__content">
                 <div className="product-best-sell__content--title">
-                  <h4 className="fs-5 mb-2">Limited Offers</h4>
-                  <h3 className="fs-3 mb-3">Quality Product</h3>
+                  <h4 className="fs-5 mb-2">Limited offer</h4>
+                  <h3 className="fs-3 mb-3">Sản phẩm cực Hot</h3>
                 </div>
                 <div className="product-best-sell__content--clock my-4">
                   <Clock />
@@ -103,6 +105,22 @@ function Home() {
                 ></img>
               </div>
             </Col>
+          </Row>
+        </Container>
+      </section>
+      <section className="product-services my-5 py-3">
+        <Container>
+          <Row className="text-center py-5">
+            <h1 className="fw-bold display-6">
+              Lợi ích khi mua hàng tại Wibu Store
+            </h1>
+          </Row>
+          <Row className="text-center">
+            {services.map((item, index) => (
+              <Col sx="12" lg="3" md="6" key={index} className="p-4">
+                <Services item={item} />
+              </Col>
+            ))}
           </Row>
         </Container>
       </section>

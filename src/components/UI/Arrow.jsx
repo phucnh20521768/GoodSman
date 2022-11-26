@@ -60,3 +60,5 @@ export function RightArrow() {
     </Arrow>
   );
 }
+
+export default Arrow;

@@ -1,23 +1,29 @@
 .hero-section {
     width: 100%;
-    height: 100vh;
-    padding-top: 20vh;
+    padding-bottom: 20rem;
+    padding-top: 20rem;
     border-radius: 0 0 50px 50px;
+    margin-top: 4rem;
+    
 }
 
 .hero-section__bg {
     background: url('../assets/images/hero-bg.jpg');
-    -webkit-filter: blur(3px);
-    -moz-filter: blur(3px);
-    -o-filter: blur(3px);
-    -ms-filter: blur(3px);
-    filter: blur(3px);
+    -webkit-filter: blur(1px);
+    -moz-filter: blur(1px);
+    -o-filter: blur(1px);
+    -ms-filter: blur(1px);
+    filter: blur(1px);
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
     z-index: -1;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
 }
 
 .hero-section__content {
@@ -28,7 +34,7 @@
 
 .product-best-sell {
     background-color: var(--primary-color-dark);
-    color: white;
+    color: var(--white);
 }
 
 .product-best-sell__img img {
@@ -38,6 +44,30 @@
 
 .product-services {
     background-color: var(--secondary-color-3);
+}
+
+.product-testimonial__subtitle {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.product-news__content {
+    background-color: var(--secondary-color-3);
+}
+
+.product-news__content--subtitle {
+    font-family: 'Roboto', sans-serif;
+}
+
+.product-news__content--input {
+    background-color: var(--secondary-color-3);
+    font-family: 'Roboto', sans-serif;
+    opacity: 0.65;
+}
+
+.product-news__img img {
+    object-fit: cover;
+    height: 30rem;
 }
  
 
@@ -56,5 +86,9 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
+    }
+    .product-news__img img {
+        object-fit: contain;
+        height: auto;
     }
 }

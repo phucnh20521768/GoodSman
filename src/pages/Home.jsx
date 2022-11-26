@@ -9,10 +9,14 @@ import product from "../assets/data/product";
 import Clock from "../components/UI/Clock";
 import Services from "../services/Services";
 import serviceData from "../assets/data/servicesData";
+import rate from "../assets/data/rate";
+import Testimonial from "../components/UI/Testimonial";
+import newsImg from "../assets/images/new-01.png";
 
 function Home() {
   const [trendingProducts, setTrendingProducts] = useState([]);
   const services = serviceData;
+  const rateData = rate;
   const bestSellProduct = product[Math.floor(Math.random() * product.length)];
   useEffect(() => {
     const filteredTrendingProducts = product.filter(
@@ -23,8 +27,10 @@ function Home() {
 
   return (
     <Helmet title={"Home"}>
-      <section className="hero-section">
-        <div className="hero-section__bg"></div>
+      <section className="hero-section position-relative">
+        <Container>
+          <div className="hero-section__bg"></div>
+        </Container>
         <Container>
           <Row>
             <Col xl="5" md="8">
@@ -97,10 +103,10 @@ function Home() {
               </div>
             </Col>
             <Col lg="6">
-              <div className="product-best-sell__img text-end">
+              <div className="text-end product-best-sell__img">
                 <img
                   src={bestSellProduct.imgUrl}
-                  className="img-fluid"
+                  className="img-fluid  "
                   alt=""
                 ></img>
               </div>
@@ -121,6 +127,53 @@ function Home() {
                 <Services item={item} />
               </Col>
             ))}
+          </Row>
+        </Container>
+      </section>
+      <section className="product-testimonial my-5 py-3">
+        <Container>
+          <Row className="text-center py-5">
+            <h1 className="product-testimonial__title fw-bold display-6">
+              Chúng tôi tự hào
+            </h1>
+            <h4 className="product-testimonial__subtitle my-3 fw-light">
+              Có hơn 6969 khách hàng thân thiết
+            </h4>
+          </Row>
+
+          <Row className="">
+            <Testimonial data={rateData} />
+          </Row>
+        </Container>
+      </section>
+      <section className="product-news my-5 py-3">
+        <Container>
+          <Row className="py-5">
+            <Col className="p-0" lg="6" sx="12">
+              <div className="product-news__img">
+                <img src={newsImg} className="img-fluid" alt=""></img>
+              </div>
+            </Col>
+            <Col className="p-0" lg="6" sx="12">
+              <div className="product-news__content p-4 p-md-5 h-100">
+                <h1 className="display-6 fw-light mb-3">Đăng ký</h1>
+                <h1 className="display-5 fw-bold">Nhận tin khuyến mãi</h1>
+                <p className="product-news__content--subtitle my-3 fs-5">
+                  Những lần giảm giá sốc đang chờ các bạn
+                </p>
+                <input
+                  type="email"
+                  className="form-control product-news__content--input border-0 my-4"
+                  placeholder="Nhập e-mail tại đây"
+                ></input>
+                <motion.button
+                  whileTap={{ scale: 1.2 }}
+                  className="btn btn-primary btn-lg"
+                >
+                  Đăng ký
+                </motion.button>
+              </div>
+            </Col>
           </Row>
         </Container>
       </section>

@@ -1,12 +1,17 @@
 import React from "react";
 import "./services.css";
+import { motion } from "framer-motion";
 
 function Services({ item }) {
   return (
     <div className="services">
       <div className="services__item">
         <span>
-          <i style={{ backgroundColor: item.bg }} className={item.icon}></i>
+          <motion.i
+            whileHover={{ fontsize: "3rem" }}
+            style={{ backgroundColor: item.bg }}
+            className={item.icon}
+          ></motion.i>
         </span>
         <div className="">
           <h5 className="services__item--title my-4 fw-bold">{item.title}</h5>

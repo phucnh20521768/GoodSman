@@ -27,6 +27,7 @@ function Clock() {
       }
     });
   };
+  useEffect(() => countDown());
   return (
     <div className="clock-wrapper d-flex align-items-center gap-4">
       <div className="clock-data">

@@ -1,17 +1,25 @@
-.bg-primary-section-summary {
-    background-color: var(--primary-color-dark);
+
+
+.cart-modal__summary {
+    background-color: var(--secondary-color-3);
+    padding: 5rem 2.5rem 5rem 2.5rem;
 }
 
-.rounded-summary {
-    border-bottom-right-radius: .4rem;
+.cart-modal__summary .form-control {
+    background-color:var(--secondary-color-3);
+    color: var(--black);
 }
 
-.font-modal{
-    font-size: 1.25rem;
+.product-cart span i {
+    font-size: 24px;
 }
 
 .max-height-summary{
     max-height: 40vh;
+}
+
+.product-cart img {
+    height: 7rem;
 }
 
 @media (max-width : 992px) {
@@ -28,9 +36,7 @@
 }
 
 @media (max-width : 1200px) {
-    .font-modal{
-        font-size: 1rem;
-    }
+    
 }
 
 .btn-checkout {

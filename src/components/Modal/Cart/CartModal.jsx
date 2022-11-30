@@ -115,8 +115,16 @@ function CartModal(props) {
         <Container>
           <Row className="">
             <Col className="col-lg-8 col-12 p-xl-5 py-5">
+              <div
+                className="d-flex align-items-center product-cart position-sticky bottom-0 start-0 mb-2 cursor-pointer"
+                onClick={props.close}
+              >
+                <span>
+                  <i className="ri-arrow-left-line"></i>
+                </span>
+                <p>Back to shop</p>
+              </div>
               <div className="d-flex justify-content-between align-items-center mb-5">
-                {" "}
                 <h1 className="display-6">Shopping cart</h1>
                 <p className="opacity-75 fw-light">
                   {props.items.length} items
@@ -194,7 +202,7 @@ function CartModal(props) {
               </div>
 
               <button
-                className="col-12 btn btn-checkout text-uppercase"
+                className="col-12 btn btn-checkout text-uppercase shadow-lg"
                 onClick={checkout}
               >
                 Checkout

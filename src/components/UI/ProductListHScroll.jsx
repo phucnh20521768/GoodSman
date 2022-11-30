@@ -1,6 +1,6 @@
 import React from "react";
 import ProductCard from "./ProductCard";
-import { LeftArrow, RightArrow } from "../UI/Arrow";
+import { LeftArrow, RightArrow } from "./Arrow";
 import { ScrollMenu } from "react-horizontal-scrolling-menu";
 
 const Arrows = () => (
@@ -9,12 +9,9 @@ const Arrows = () => (
   </div>
 );
 
-function ProductList({ data }) {
+function ProductListHScroll({ data }) {
   return (
-    <ScrollMenu
-      scrollContainerClassName="py-4 px-2 scrollbar-spe"
-      Footer={Arrows}
-    >
+    <ScrollMenu scrollContainerClassName="py-4 px-2 scrollbar" Footer={Arrows}>
       {data.map((item, index) => (
         <ProductCard itemId={item.id} key={item.id} item={item} index={index} />
       ))}
@@ -22,4 +19,4 @@ function ProductList({ data }) {
   );
 }
 
-export default ProductList;
+export default ProductListHScroll;

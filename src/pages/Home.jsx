@@ -3,23 +3,27 @@ import { Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Helmet from "../components/Helmet/Helmet";
-import ProductList from "../components/UI/ProductList";
+import ProductListHScroll from "../components/UI/ProductListHScroll";
 import "../styles/home.css";
-import product from "../assets/data/product";
+import productData from "../assets/data/product";
 import Clock from "../components/UI/Clock";
 import Services from "../services/Services";
 import serviceData from "../assets/data/servicesData";
-import rate from "../assets/data/rate";
+import rateData from "../assets/data/rate";
 import Testimonial from "../components/UI/Testimonial";
 import newsImg from "../assets/images/new-01.png";
+import CategoryCard from "../components/UI/CategoryCard";
+import categoryData from "../assets/data/category";
 
 function Home() {
   const [trendingProducts, setTrendingProducts] = useState([]);
   const services = serviceData;
-  const rateData = rate;
-  const bestSellProduct = product[Math.floor(Math.random() * product.length)];
+  const rates = rateData;
+  const categories = categoryData;
+  const bestSellProduct =
+    productData[Math.floor(Math.random() * productData.length)];
   useEffect(() => {
-    const filteredTrendingProducts = product.filter(
+    const filteredTrendingProducts = productData.filter(
       (item) => item.isTrending === true
     );
     setTrendingProducts(filteredTrendingProducts);
@@ -56,8 +60,39 @@ function Home() {
       </section>
       <section className="category">
         <Container>
-          <Row></Row>
-          <Row></Row>
+          <Row className="text-center py-5">
+            <h1 className="fw-bold display-6">Danh mục sản phẩm</h1>
+          </Row>
+          <Row className="">
+            <Col className="px-5">
+              <div class="search-input input-group border-1 rounded">
+                <span class="input-group-text" id="search-addon">
+                  <i class="ri-search-line"></i>
+                </span>
+                <input
+                  type="search"
+                  class="form-control"
+                  placeholder="Search"
+                  aria-label="Search"
+                  aria-describedby="search-addon"
+                />
+              </div>
+              {categories.map((item, index) => (
+                <div key={index}>
+                  <p>{item.categoryName}</p>
+                </div>
+              ))}
+            </Col>
+            <Col lg="8">
+              <Row className="g-3">
+                {categories.map((item, index) => (
+                  <Col lg="6">
+                    <CategoryCard key={index} item={item} />
+                  </Col>
+                ))}
+              </Row>
+            </Col>
+          </Row>
         </Container>
       </section>
       <section className="product-trending">
@@ -66,7 +101,7 @@ function Home() {
             <h1 className="fw-bold display-6">Sản phẩm được ưu chuộng</h1>
           </Row>
           <Row className="">
-            <ProductList data={trendingProducts} />
+            <ProductListHScroll data={trendingProducts} />
           </Row>
         </Container>
       </section>
@@ -142,7 +177,7 @@ function Home() {
           </Row>
 
           <Row className="">
-            <Testimonial data={rateData} />
+            <Testimonial data={rates} />
           </Row>
         </Container>
       </section>

@@ -11,13 +11,16 @@ function ProductCard({ item, index }) {
         className="product-item"
         style={{ backgroundColor: colors[index % colors.length] }}
       >
-        <Link to={"/shop/" + item.id}>
-          <motion.img
-            whileHover={{ scale: 1.1 }}
-            className="product-item__img img-fluid"
-            src={item.imgUrl}
-          />
-        </Link>
+        <div className="product-item__img ">
+          <Link to={"/shop/" + item.id}>
+            <motion.img
+              whileHover={{ scale: 1.1 }}
+              className="img-fluid"
+              src={item.imgUrl}
+            />
+          </Link>
+        </div>
+
         <Card.Body className="product-item__des">
           <Link to="/shop/id">
             <Card.Title className="product-item__des--title">

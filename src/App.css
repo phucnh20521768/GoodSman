@@ -1,6 +1,7 @@
 /* google fonts */
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-@import './styles/components.css';
+@import "./styles/components.css";
+@import "./styles/scrollbar_primary.css";
 
 /*  css variables */
 :root {
@@ -8,14 +9,14 @@
   --card-bg-02: #d6e5fb;
   --card-bg-03: #ceebe9;
   --card-bg-04: #14160f;
-  --primary-color: #70908B;
-  --primary-color-dark: #07484A;
-  --secondary-color-0: #FDFBF8;
-  --secondary-color-1: #FFF4E7;
-  --secondary-color-2: #EEEBFF;
-  --secondary-color-3: #E0EFF6;
-  --secondary-color-4: #CAF3E5;
-  --hero-bg: #C4C4C4;
+  --primary-color: #70908b;
+  --primary-color-dark: #07484a;
+  --secondary-color-0: #fdfbf8;
+  --secondary-color-1: #fff4e7;
+  --secondary-color-2: #eeebff;
+  --secondary-color-3: #e0eff6;
+  --secondary-color-4: #caf3e5;
+  --hero-bg: #c4c4c4;
   --heading-fontSize: 2rem;
   --small-text-color: #999;
   --heading-text-color: #0a1d37;
@@ -27,9 +28,8 @@
   --xxl: 1400px;
   --black: #000;
   --white: #fff;
+  --light: #f0f0f0;
 }
-
-
 
 /* reset browser default */
 * {
@@ -39,7 +39,7 @@
 }
 
 body {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   color: var(--primary-color-dark);
   font-size: 1.2rem;
   min-width: 360px;
@@ -56,9 +56,10 @@ p {
   margin: 0;
 }
 
-p, h6 {
+p,
+h6 {
   font-size: 1rem;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 h1,

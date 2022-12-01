@@ -14,6 +14,7 @@ import Testimonial from "../components/UI/Testimonial";
 import newsImg from "../assets/images/new-01.png";
 import CategoryCard from "../components/UI/CategoryCard";
 import categoryData from "../assets/data/category";
+import CategorySelector from "../components/UI/CategorySelector";
 
 function Home() {
   const [trendingProducts, setTrendingProducts] = useState([]);
@@ -48,7 +49,7 @@ function Home() {
                 <Link to="/shop">
                   <motion.button
                     whileTap={{ scale: 1.2 }}
-                    className="btn btn-primary btn-lg"
+                    className="btn btn-primary btn-lg "
                   >
                     Mua hàng
                   </motion.button>
@@ -64,30 +65,13 @@ function Home() {
             <h1 className="fw-bold display-6">Danh mục sản phẩm</h1>
           </Row>
           <Row className="">
-            <Col className="px-5">
-              <div class="search-input input-group border-1 rounded">
-                <span class="input-group-text" id="search-addon">
-                  <i class="ri-search-line"></i>
-                </span>
-                <input
-                  type="search"
-                  class="form-control"
-                  placeholder="Search"
-                  aria-label="Search"
-                  aria-describedby="search-addon"
-                />
-              </div>
-              {categories.map((item, index) => (
-                <div key={index}>
-                  <p>{item.categoryName}</p>
-                </div>
-              ))}
-            </Col>
-            <Col lg="8">
+            <Col>
               <Row className="g-3">
                 {categories.map((item, index) => (
-                  <Col lg="6">
-                    <CategoryCard key={index} item={item} />
+                  <Col lg="6" key={index}>
+                    <Link>
+                      <CategoryCard item={item} />
+                    </Link>
                   </Col>
                 ))}
               </Row>

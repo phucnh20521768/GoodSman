@@ -3,19 +3,25 @@ import { Card } from "react-bootstrap";
 import { motion } from "framer-motion";
 import "../../styles/product_card.css";
 import { Link } from "react-router-dom";
-
-function ProductCard({ item }) {
+import colors from "../../assets/data/colorCard";
+function ProductCard({ item, index }) {
   return (
     <>
-      <Card className="product-item">
-        <Link to="/shop/id">
-          <motion.img
-            whileHover={{ scale: 1.2 }}
-            className="product-item__img img-fluid"
-            src={item.imgUrl}
-          />
-        </Link>
-        <Card.Body className="product-item__des my-2">
+      <Card
+        className="product-item"
+        style={{ backgroundColor: colors[index % colors.length] }}
+      >
+        <div className="product-item__img ">
+          <Link to={"/shop/" + item.id}>
+            <motion.img
+              whileHover={{ scale: 1.1 }}
+              className="img-fluid"
+              src={item.imgUrl}
+            />
+          </Link>
+        </div>
+
+        <Card.Body className="product-item__des">
           <Link to="/shop/id">
             <Card.Title className="product-item__des--title">
               {item.productName}
@@ -29,7 +35,7 @@ function ProductCard({ item }) {
               {item.price}đ
             </Card.Text>
             <motion.span
-              whileHover={{ scale: 1.2 }}
+              whileHover={{ scale: 1.1 }}
               className="product-item__des--icon"
             >
               <i className="ri-add-line"></i>

@@ -1,6 +1,7 @@
 .header {
     width: 100%;
     background-color: var(--hero-bg);
+    min-width: 360px;
 }
 
 .nav-wrapper {

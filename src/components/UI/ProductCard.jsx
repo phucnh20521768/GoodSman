@@ -4,7 +4,9 @@ import { motion } from "framer-motion";
 import "../../styles/product_card.css";
 import { Link } from "react-router-dom";
 import colors from "../../assets/data/colorCard";
+import numeral from "numeral";
 function ProductCard({ item, index }) {
+  const price = numeral(item.price);
   return (
     <>
       <Card
@@ -32,7 +34,7 @@ function ProductCard({ item, index }) {
           </Card.Text>
           <div className="product-item__bottom d-flex justify-content-between mt-4">
             <Card.Text className="product-item__des--value">
-              {item.price}đ
+              {price.format("0,0[.]00")}đ
             </Card.Text>
             <motion.span
               whileHover={{ scale: 1.1 }}

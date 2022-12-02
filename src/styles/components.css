@@ -11,7 +11,7 @@
 }
 
 .btn-primary:active {
-  background-color: var(--primary-color-dark);
+  background-color: var(--primary-color-dark) !important;
 }
 
 .btn-arrow {

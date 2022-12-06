@@ -6,6 +6,7 @@ import Cart from '../pages/Cart'
 import Checkout from '../pages/Checkout'
 import ProductDetails from '../pages/ProductDetails'
 import Products from '../pages/Products'
+import About from '../pages/About'
 
 function Routers() {
   return (
@@ -16,6 +17,7 @@ function Routers() {
       <Route path='products' element={<Products />} />
       <Route path='checkout' element={<Checkout />} />
       <Route path='products/:id' element={<ProductDetails />} />
+      <Route path='about' element={<About />} />
     </Routes>
   )
 }

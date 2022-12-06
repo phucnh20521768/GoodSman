@@ -1,0 +1,30 @@
+.title {
+    padding-top: 1rem;
+}
+
+.line-header, .line-content {
+    width: 30%;
+    height: 2px;
+    border-width: 0;
+    opacity: 1;
+}
+
+.line-header {
+    color: black;
+    background-color: black;
+}
+
+.line-content {
+    color: #07484A;
+    background-color: #07484A;
+}
+
+.align-end {
+    text-align: right;
+    margin-left: auto;
+}
+
+.text-justify {
+    text-align: justify;
+}
+

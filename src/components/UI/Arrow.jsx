@@ -35,7 +35,7 @@ export function LeftArrow() {
 
   return (
     <Arrow disabled={false} onClick={() => scrollPrev()}>
-      <i class="ri-arrow-left-line"></i>
+      <i className="ri-arrow-left-line"></i>
     </Arrow>
   );
 }
@@ -56,7 +56,7 @@ export function RightArrow() {
 
   return (
     <Arrow disabled={false} onClick={() => scrollNext()}>
-      <i class="ri-arrow-right-line"></i>
+      <i className="ri-arrow-right-line"></i>
     </Arrow>
   );
 }

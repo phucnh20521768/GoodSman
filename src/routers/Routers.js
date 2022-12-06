@@ -16,9 +16,9 @@ function Routers() {
       <Route path='home' element={<Home />} />
       <Route path='about' element={<About />} />
       <Route path='cart' element={<Cart />} />
-      <Route path='shop' element={<Products />} />
+      <Route path='products' element={<Products />} />
       <Route path='checkout' element={<Checkout />} />
-      <Route path='shop/:id' element={<ProductDetails />} />
+      <Route path='products/:id' element={<ProductDetails />} />
       <Route path='account' element={<Account />} />
     </Routes>
   )

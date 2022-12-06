@@ -13,12 +13,12 @@ function Testimonial({ data }) {
         indicators={false}
         nextIcon={
           <Arrow>
-            <i class="ri-arrow-right-line"></i>
+            <i className="ri-arrow-right-line"></i>
           </Arrow>
         }
         prevIcon={
           <Arrow>
-            <i class="ri-arrow-left-line"></i>
+            <i className="ri-arrow-left-line"></i>
           </Arrow>
         }
       >
@@ -34,7 +34,7 @@ function Testimonial({ data }) {
               </Col>
               <Col className="testimonnial__content" lg="6" sx="12">
                 <p className="text-muted pe-lg-5 ps-lg-1 testimonnial__comment">
-                  <i class="ri-double-quotes-l"> </i>
+                  <i className="ri-double-quotes-l"> </i>
                   {item.comment}
                 </p>
                 <div className="my-1">

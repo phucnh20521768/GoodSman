@@ -89,11 +89,11 @@ function Header() {
                   <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">
                     9<span className="visually-hidden">cart</span>
                   </span>
-                  <NavLink to="/cart" activeClassName="active">
+                  <NavLink to="/cart" activeclassname="active">
                     <i className="ri-shopping-cart-2-fill icon cursor-pointer"></i>
                   </NavLink>
                 </span>
-                <NavLink to="/account" activeClassName="active">
+                <NavLink to="/account" activeclassname="active">
                   <i className="ri-user-fill icon cursor-pointer"></i>
                 </NavLink>
               </div>

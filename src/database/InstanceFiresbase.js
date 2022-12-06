@@ -11,13 +11,14 @@ const firebaseConfig = {
     appId: "1:458144098180:web:5b6d479c860034ca4a9fd1"
 }
 
-const firebaseApp = initializeApp(firebaseConfig);
-
+let _firebaseApp = null
 let _firebaseFirestore = null
 let _firebaseStorage = null
+
+let firebaseApp = _firebaseApp == null ? (_firebaseApp = initializeApp(firebaseConfig)) : _firebaseApp
 
 let firebaseFirestore = _firebaseFirestore == null ? (_firebaseFirestore = getFirestore(firebaseApp)) : _firebaseFirestore
 
 let firebaseStorage = _firebaseStorage == null ? (_firebaseStorage = getStorage(firebaseApp)) : _firebaseStorage
 
-export { firebaseFirestore, firebaseStorage };
+export { firebaseFirestore, firebaseStorage, firebaseApp };

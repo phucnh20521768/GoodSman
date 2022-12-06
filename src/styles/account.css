@@ -1,0 +1,21 @@
+.account-section {
+    width: 25vw;
+    margin: 0 auto;
+    padding-top: 20vh;
+    height: 100vh;
+}
+
+.bg-account {
+    background: url('../assets/images/hero-bg.jpg');
+    -webkit-filter: blur(3px);
+    -moz-filter: blur(3px);
+    -o-filter: blur(3px);
+    -ms-filter: blur(3px);
+    filter: blur(3px);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}

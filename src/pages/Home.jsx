@@ -14,6 +14,19 @@ import Testimonial from "../components/UI/Testimonial";
 import newsImg from "../assets/images/new-01.png";
 import CategoryCard from "../components/UI/CategoryCard";
 import categoryData from "../assets/data/category";
+import { Upload } from "../database/testConnection.js";
+import { collection, getDocs } from "firebase/firestore/lite";
+import { firebaseFirestore } from "../database/InstanceFiresbase";
+import { ProductModel } from "../database/Models/ProductModel.ts";
+
+async function getProducts() {
+  const mCollection = collection(firebaseFirestore, "/products").withConverter(
+    ProductModel.productConvert
+  );
+  const mSnapshot = await getDocs(mCollection);
+  const mDocs = mSnapshot.docs.map((doc) => doc.data());
+  return mDocs;
+}
 
 function Home() {
   const [trendingProducts, setTrendingProducts] = useState([]);
@@ -22,11 +35,12 @@ function Home() {
   const categories = categoryData;
   const bestSellProduct =
     productData[Math.floor(Math.random() * productData.length)];
+  const [data, setData] = useState([]);
+
   useEffect(() => {
-    const filteredTrendingProducts = productData.filter(
-      (item) => item.isTrending === true
-    );
-    setTrendingProducts(filteredTrendingProducts);
+    const trendingProduct = product.filter((item) => item.isTrending === true);
+
+    setData(trendingProduct);
   }, []);
 
   return (
@@ -48,7 +62,7 @@ function Home() {
                 <Link to="/shop">
                   <motion.button
                     whileTap={{ scale: 1.2 }}
-                    className="btn btn-primary btn-lg "
+                    className="btn btn-primary btn-lg"
                   >
                     Mua hàng
                   </motion.button>

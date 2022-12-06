@@ -1,11 +1,12 @@
 import 'firebase/firestore/lite'
-import { DocumentData, QueryDocumentSnapshot, WithFieldValue } from 'firebase/firestore/lite';
+import { DocumentData, QueryDocumentSnapshot } from 'firebase/firestore/lite';
 
 export class ProductModel {
     constructor(
         readonly id: string,
         readonly productName: string,
-        readonly images: [],
+        readonly imgThumb: string,
+        readonly imgUrls: [],
         readonly cateogry: string,
         readonly price: number,
         readonly isTrending: boolean,
@@ -14,19 +15,19 @@ export class ProductModel {
         readonly avgRating: number,
         readonly reviews: []) { }
 
-    static postConverter = {
-        toFirestore(product: WithFieldValue<ProductModel>): DocumentData {
+    static productConvert = {
+        toFirestore(product: ProductModel): DocumentData {
             return {
-                id: this.id,
-                productName: this.productName,
-                images: this.images,
-                category: this.category,
-                price: this.price,
-                isTrending: this.isTrending,
-                shortDesc: this.shortDesc,
-                description: this.description,
-                reviews: this.reviews,
-                avgRating: this.avgRating,
+                productName: product.productName,
+                imgThumb: product.imgThumb,
+                imgUrls: product.imgUrls,
+                cateogry: product.cateogry,
+                price: product.price,
+                isTrending: product.isTrending,
+                shortDesc: product.shortDesc,
+                description: product.description,
+                avgRating: product.avgRating,
+                reviews: product.reviews
             }
         },
         fromFirestore(
@@ -34,9 +35,11 @@ export class ProductModel {
             options
         ): ProductModel {
             const data = snapshot.data()!;
-            return new ProductModel(data.id,
+            return new ProductModel(
+                snapshot.id,
                 data.productName,
-                data.images,
+                data.imgThumb,
+                data.imgUrls,
                 data.category,
                 data.price,
                 data.isTrending,
@@ -45,6 +48,22 @@ export class ProductModel {
                 data.avgRating,
                 data.reviews);
         }
+    }
+
+    static fromJSON(object): ProductModel {
+        return new ProductModel(
+            '',
+            object.productName,
+            object.imgThumb,
+            object.imgUrls,
+            object.category,
+            object.price,
+            object.isTrending,
+            object.shortDesc,
+            object.description,
+            object.avgRating,
+            object.reviews
+        );
     }
 }
 

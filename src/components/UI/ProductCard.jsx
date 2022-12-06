@@ -18,7 +18,7 @@ function ProductCard({ item, index }) {
             <motion.img
               whileHover={{ scale: 1.1 }}
               className="img-fluid"
-              src={item.imgUrl}
+              src={item.imgThumb}
             />
           </Link>
         </div>

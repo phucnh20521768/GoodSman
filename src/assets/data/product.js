@@ -325,7 +325,8 @@ const products = [
   {
     id: "13",
     productName: "Apple iPhone 12 Pro",
-    imgUrl: productImg13,
+    imgThumb: productImg13,
+    imgUrls: [productImg13],
     category: "mobile",
     price: 7990000,
     isTrending: true,
@@ -597,7 +598,8 @@ const products = [
   {
     id: "24",
     productName: "Bear Image Wireless",
-    imgUrl: productImg24,
+    imgThumb: productImg24,
+    imgUrls: [productImg24],
     category: "wireless",
     price: 2990000,
     isTrending: false,

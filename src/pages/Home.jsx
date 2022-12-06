@@ -35,14 +35,13 @@ function Home() {
   const categories = categoryData;
   const bestSellProduct =
     productData[Math.floor(Math.random() * productData.length)];
-  const [data, setData] = useState([]);
 
   useEffect(() => {
     const trendingProduct = productData.filter(
       (item) => item.isTrending === true
     );
 
-    setData(trendingProduct);
+    setTrendingProducts(trendingProduct);
   }, []);
 
   return (
@@ -138,7 +137,7 @@ function Home() {
             <Col lg="6">
               <div className="text-end product-best-sell__img">
                 <img
-                  src={bestSellProduct.imgUrl}
+                  src={bestSellProduct.imgThumb}
                   className="img-fluid  "
                   alt=""
                 ></img>

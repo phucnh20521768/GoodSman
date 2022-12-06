@@ -1,7 +1,17 @@
 import React from "react";
-import { Container, Row, Navbar, Nav, Offcanvas, Col } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Navbar,
+  Nav,
+  Offcanvas,
+  Col,
+  Modal,
+  ModalBody,
+} from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/images/Logo.png";
+import icon_google from "../../assets/images/icon_google.png";
 import "./header.css";
 
 const nav_links = [
@@ -10,20 +20,32 @@ const nav_links = [
     display: "Trang chủ",
   },
   {
-    path: "shop",
-    display: "Sản phẩm",
-  },
-  {
-    path: "list",
-    display: "Danh mục",
-  },
-  {
     path: "about",
     display: "Giới thiệu",
   },
   {
+    path: "products",
+    display: "Sản phẩm",
+  },
+  {
+    path: "our-projects",
+    display: "Dự án",
+  },
+  {
     path: "contact",
     display: "Liên hệ",
+  },
+];
+
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showUserModal: false,
+    };
+
+    this.closeUserModal = this.closeUserModal.bind(this);
+    this.showUserModal = this.showUserModal.bind(this);
   }
 ];
 
@@ -92,3 +114,4 @@ function Header() {
 }
 
 export default Header;
+

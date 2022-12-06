@@ -20,16 +20,16 @@ const nav_links = [
     display: "Trang chủ",
   },
   {
+    path: "about",
+    display: "Giới thiệu",
+  },
+  {
     path: "products",
     display: "Sản phẩm",
   },
   {
-    path: "list",
-    display: "Danh mục",
-  },
-  {
-    path: "about",
-    display: "Giới thiệu",
+    path: "our-projects",
+    display: "Dự án",
   },
   {
     path: "contact",

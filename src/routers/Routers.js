@@ -5,6 +5,7 @@ import Home from '../pages/Home'
 import Cart from '../pages/Cart'
 import Checkout from '../pages/Checkout'
 import ProductDetails from '../pages/ProductDetails'
+import Account from '../pages/Account'
 import Products from '../pages/Products'
 import About from '../pages/About'
 
@@ -14,10 +15,9 @@ function Routers() {
       <Route path='/' element={<Navigate to='home' />} />
       <Route path='home' element={<Home />} />
       <Route path='cart' element={<Cart />} />
-      <Route path='products' element={<Products />} />
+      <Route path='shop' element={<Shop />} />
       <Route path='checkout' element={<Checkout />} />
-      <Route path='products/:id' element={<ProductDetails />} />
-      <Route path='about' element={<About />} />
+      <Route path='shop/:id' element={<ProductDetails />} />
     </Routes>
   )
 }

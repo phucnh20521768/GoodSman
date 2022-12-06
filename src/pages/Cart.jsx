@@ -2,45 +2,45 @@ import { React, useEffect, useState, useRef } from "react";
 import { Row, Col, Container, Modal, Button } from "react-bootstrap";
 import "../styles/cart.css";
 import { hasLogin } from "../database/Auth/Auth";
-import icon_google from "../assets/images/arm-chair-01.jpg";
+import icon_google from "../assets/images/arm-chair-01.png";
 
 const mockData = [
   {
-    id: '01',
-    name: 'Dell Precision 7770',
-    desc: 'Intel Core i7-12700H, 16GB DDR5 5200MHz',
+    id: "01",
+    name: "Dell Precision 7770",
+    desc: "Intel Core i7-12700H, 16GB DDR5 5200MHz",
     quantity: 1,
-    pricePerUnit: 10
+    pricePerUnit: 10,
   },
   {
-    id: '02',
-    name: 'Dell Precision 7770',
-    desc: 'Intel Core i7-12700H, 16GB DDR5 5200MHz',
+    id: "02",
+    name: "Dell Precision 7770",
+    desc: "Intel Core i7-12700H, 16GB DDR5 5200MHz",
     quantity: 1,
-    pricePerUnit: 20
+    pricePerUnit: 20,
   },
   {
-    id: '03',
-    name: 'Dell Precision 7770',
-    desc: 'Intel Core i7-12700H, 16GB DDR5 5200MHz',
+    id: "03",
+    name: "Dell Precision 7770",
+    desc: "Intel Core i7-12700H, 16GB DDR5 5200MHz",
     quantity: 1,
-    pricePerUnit: 30
+    pricePerUnit: 30,
   },
   {
-    id: '04',
-    name: 'Dell Precision 7770',
-    desc: 'Intel Core i7-12700H, 16GB DDR5 5200MHz',
+    id: "04",
+    name: "Dell Precision 7770",
+    desc: "Intel Core i7-12700H, 16GB DDR5 5200MHz",
     quantity: 1,
-    pricePerUnit: 10
+    pricePerUnit: 10,
   },
   {
-    id: '05',
-    name: 'Dell Precision 7770',
-    desc: 'Intel Core i7-12700H, 16GB DDR5 5200MHz',
+    id: "05",
+    name: "Dell Precision 7770",
+    desc: "Intel Core i7-12700H, 16GB DDR5 5200MHz",
     quantity: 1,
-    pricePerUnit: 20
-  }
-]
+    pricePerUnit: 20,
+  },
+];
 
 function Divide() {
   return (
@@ -117,8 +117,8 @@ function ProductCart(props) {
 function Cart() {
   const props = {
     items: mockData,
-    open: () => { },
-  }
+    open: () => {},
+  };
   const [methodShipping, setMethodShipping] = useState(1);
   const [updated, setUpdated] = useState(false);
 
@@ -159,9 +159,7 @@ function Cart() {
           </div>
           <div className="d-flex justify-content-between align-items-center mb-5">
             <h1 className="display-6">Shopping cart</h1>
-            <p className="opacity-75 fw-light">
-              {props.items.length} items
-            </p>
+            <p className="opacity-75 fw-light">{props.items.length} items</p>
           </div>
           <Divide />
           {props.items.map((item) => (

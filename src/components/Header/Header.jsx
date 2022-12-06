@@ -37,18 +37,6 @@ const nav_links = [
   },
 ];
 
-class Header extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showUserModal: false,
-    };
-
-    this.closeUserModal = this.closeUserModal.bind(this);
-    this.showUserModal = this.showUserModal.bind(this);
-  }
-];
-
 function Header() {
   return (
     <header className="header">
@@ -101,9 +89,13 @@ function Header() {
                   <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">
                     9<span className="visually-hidden">cart</span>
                   </span>
-                  <NavLink to="/cart" activeClassName='active'><i className="ri-shopping-cart-2-fill icon cursor-pointer"></i></NavLink>
+                  <NavLink to="/cart" activeClassName="active">
+                    <i className="ri-shopping-cart-2-fill icon cursor-pointer"></i>
+                  </NavLink>
                 </span>
-                <NavLink to="/account" activeClassName="active"><i className="ri-user-fill icon cursor-pointer"></i></NavLink>
+                <NavLink to="/account" activeClassName="active">
+                  <i className="ri-user-fill icon cursor-pointer"></i>
+                </NavLink>
               </div>
             </Navbar>
           </Col>
@@ -114,4 +106,3 @@ function Header() {
 }
 
 export default Header;
-

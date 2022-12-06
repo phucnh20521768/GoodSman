@@ -38,7 +38,9 @@ function Home() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const trendingProduct = product.filter((item) => item.isTrending === true);
+    const trendingProduct = productData.filter(
+      (item) => item.isTrending === true
+    );
 
     setData(trendingProduct);
   }, []);

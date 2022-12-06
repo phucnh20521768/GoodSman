@@ -14,7 +14,6 @@ import Testimonial from "../components/UI/Testimonial";
 import newsImg from "../assets/images/new-01.png";
 import CategoryCard from "../components/UI/CategoryCard";
 import categoryData from "../assets/data/category";
-import CategorySelector from "../components/UI/CategorySelector";
 
 function Home() {
   const [trendingProducts, setTrendingProducts] = useState([]);
@@ -77,15 +76,17 @@ function Home() {
               </Row>
             </Col>
           </Row>
-        </Container>
-      </section>
-      <section className="product-trending">
-        <Container>
-          <Row className="text-center py-5">
-            <h1 className="fw-bold display-6">Sản phẩm được ưu chuộng</h1>
-          </Row>
-          <Row className="">
-            <ProductListHScroll data={trendingProducts} />
+          <Row>
+            <Col className="text-center mt-5">
+              <Link to="/shop">
+                <motion.button
+                  whileTap={{ scale: 1.2 }}
+                  className="btn btn-primary btn-lg opacity-100"
+                >
+                  Xem thêm...
+                </motion.button>
+              </Link>
+            </Col>
           </Row>
         </Container>
       </section>
@@ -93,9 +94,6 @@ function Home() {
         <Container>
           <Row className="text-center py-5">
             <h1 className="fw-bold display-6">Khuyến mãi đặc biệt</h1>
-          </Row>
-          <Row className="text-center">
-            <Col></Col>
           </Row>
         </Container>
       </section>
@@ -114,7 +112,7 @@ function Home() {
                 <Link to="/shop">
                   <motion.button
                     whileTap={{ scale: 1.2 }}
-                    className="btn btn-primary btn-lg bg-white text-black opacity-100 fw-bold"
+                    className="btn btn-primary btn-lg opacity-100 fw-bold"
                   >
                     Ghé shop ngay!
                   </motion.button>
@@ -133,6 +131,17 @@ function Home() {
           </Row>
         </Container>
       </section>
+      <section className="product-trending">
+        <Container>
+          <Row className="text-center py-5">
+            <h1 className="fw-bold display-6">Sản phẩm được ưu chuộng</h1>
+          </Row>
+          <Row className="">
+            <ProductListHScroll data={trendingProducts} />
+          </Row>
+        </Container>
+      </section>
+
       <section className="product-services my-5 py-3">
         <Container>
           <Row className="text-center py-5">

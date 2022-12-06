@@ -14,7 +14,7 @@ function CategoryCard({ item }) {
         style={{ backgroundImage: `url(${item.imgUrl})` }}
       ></div>
       <div className="category-card__overlay"></div>
-      <h1 className="text-white display-4 text-uppercase">
+      <h1 className="category-card__text text-white display-4 text-uppercase">
         {item.categoryName}
       </h1>
     </motion.div>

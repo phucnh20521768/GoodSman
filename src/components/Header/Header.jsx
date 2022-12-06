@@ -20,16 +20,16 @@ const nav_links = [
     display: "Trang chủ",
   },
   {
-    path: "shop",
+    path: "about",
+    display: "Giới thiệu",
+  },
+  {
+    path: "products",
     display: "Sản phẩm",
   },
   {
-    path: "list",
-    display: "Danh mục",
-  },
-  {
-    path: "about",
-    display: "Giới thiệu",
+    path: "our-projects",
+    display: "Dự án",
   },
   {
     path: "contact",
@@ -58,7 +58,7 @@ class Header extends React.Component {
 
   render() {
     return (
-      <header className="header fixed-top">
+      <header className="header sticky-top">
         <Container>
           <Row>
             <Col>

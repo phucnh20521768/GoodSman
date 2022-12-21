@@ -5,8 +5,26 @@ import "../../styles/product_card.css";
 import { Link } from "react-router-dom";
 import colors from "../../assets/data/colorCard";
 import numeral from "numeral";
+
+import { ToastContainer, toast } from "react-toastify";
+
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../redux/slices/cartSlice";
+
 function ProductCard({ item, index }) {
   const price = numeral(item.price);
+  const dispatch = useDispatch();
+  const addToCart = () => {
+    dispatch(
+      cartActions.addItem({
+        id: item.id,
+        productName: item.productName,
+        price: item.price,
+        imgThumb: item.imgThumb,
+      })
+    );
+    toast.success("Thêm thành công");
+  };
   return (
     <>
       <Card
@@ -38,6 +56,7 @@ function ProductCard({ item, index }) {
             </Card.Text>
             <motion.span
               whileHover={{ scale: 1.1 }}
+              onClick={addToCart}
               className="product-item__des--icon"
             >
               <i className="ri-add-line"></i>

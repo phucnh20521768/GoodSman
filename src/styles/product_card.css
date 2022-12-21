@@ -32,13 +32,13 @@
 .product-item__des--title {
   opacity: 0.65;
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 .product-item__des--value {
   opacity: 0.65;
-  font-weight: 600;
-  font-size: 1.1rem;
+  font-weight: 700;
+  font-size: 1.2rem;
 }
 
 .product-item__des--icon i {

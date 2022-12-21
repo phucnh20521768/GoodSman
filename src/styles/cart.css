@@ -1,6 +1,6 @@
 .cart-modal__summary {
   background-color: var(--secondary-color-3);
-  padding: 5rem 2.5rem 5rem 2.5rem;
+  padding: 2.5rem;
 }
 
 .cart-modal__summary .form-control {
@@ -17,7 +17,10 @@
 }
 
 .product-cart img {
-  height: 7rem;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin-right: 2rem;
 }
 
 @media (max-width: 992px) {

@@ -1,17 +1,8 @@
 import React from "react";
-import {
-  Container,
-  Row,
-  Navbar,
-  Nav,
-  Offcanvas,
-  Col,
-  Modal,
-  ModalBody,
-} from "react-bootstrap";
+import { Container, Row, Navbar, Nav, Offcanvas, Col } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 import logo from "../../assets/images/Logo.png";
-import icon_google from "../../assets/images/icon_google.png";
 import "./header.css";
 
 const nav_links = [
@@ -38,8 +29,9 @@ const nav_links = [
 ];
 
 function Header() {
+  const totalQuanlity = useSelector((state) => state.cart.totalQuanlity);
   return (
-    <header className="header">
+    <header className="header sticky-top">
       <Container>
         <Row>
           <Col>
@@ -87,7 +79,8 @@ function Header() {
                 </span>
                 <span className="position-relative">
                   <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">
-                    9<span className="visually-hidden">cart</span>
+                    {totalQuanlity}
+                    <span className="visually-hidden">cart</span>
                   </span>
                   <NavLink to="/cart" activeclassname="active">
                     <i className="ri-shopping-cart-2-fill icon cursor-pointer"></i>

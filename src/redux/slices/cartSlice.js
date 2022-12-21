@@ -26,7 +26,7 @@ const cartSlice = createSlice({
             }
             else {
                 existingItem.quanlity++;
-                existingItem.totalPrice = Number(existingItem.totalPrice) + Number(existingItem.price);
+                existingItem.totalPrice = Number(existingItem.price) * existingItem.quanlity;
             }
 
             state.totalAmount = state.cartItems.reduce((total, item) => total + Number(item.price) * Number(item.quanlity), 0);
@@ -36,11 +36,35 @@ const cartSlice = createSlice({
             const id = action.payload
             const existingItem = state.cartItems.find(item => item.id === id);
             if (existingItem) {
+
                 state.cartItems = state.cartItems.filter(item => item.id !== id);
                 state.totalQuanlity -= existingItem.quanlity
                 state.totalAmount = state.cartItems.reduce((total, item) => total + Number(item.price) * Number(item.quanlity), 0);
             }
-        }
+        },
+        increItemQuanlity: (state, action) => {
+            const id = action.payload
+            const existingItem = state.cartItems.find((item) => item.id === id);
+
+            if (existingItem) {
+                existingItem.quanlity++;
+                existingItem.totalPrice = Number(existingItem.price) * existingItem.quanlity;
+                state.totalQuanlity++;
+                state.totalAmount = state.cartItems.reduce((total, item) => total + Number(item.price) * Number(item.quanlity), 0);
+            }
+        },
+        decreItemQuanlity: (state, action) => {
+            const id = action.payload
+            const existingItem = state.cartItems.find((item) => item.id === id);
+
+            if (existingItem) {
+                if (existingItem.quanlity <= 1) return;
+                existingItem.quanlity--;
+                existingItem.totalPrice = Number(existingItem.price) * existingItem.quanlity;
+                state.totalQuanlity--;
+                state.totalAmount = state.cartItems.reduce((total, item) => total + Number(item.price) * Number(item.quanlity), 0);
+            }
+        },
     }
 });
 

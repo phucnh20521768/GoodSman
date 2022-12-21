@@ -18,10 +18,26 @@ function Divide() {
 }
 
 function ProductCart({ item }) {
-  const updateQuantity = (value) => {};
+  const [quanlity, setQuantity] = useState("");
+  const [editQuanlity, setEditQuantity] = useState(false);
+  const handleEditQuanlity = () => {
+    setEditQuantity(true);
+  };
   const dispatch = useDispatch();
+
   const deleteProduct = () => {
     dispatch(cartActions.deleteItem(item.id));
+  };
+
+  const increQuanlity = () => {
+    dispatch(cartActions.increItemQuanlity(item.id));
+  };
+
+  const decreQuanlity = () => {
+    dispatch(cartActions.decreItemQuanlity(item.id));
+  };
+  const handleBlur = () => {
+    setEditQuantity(false);
   };
   return (
     <Row className="d-flex align-items-center product-cart my-3 justify-content-between">
@@ -37,17 +53,26 @@ function ProductCart({ item }) {
       </Col>
       <Col xs="6" md="auto" className="d-flex order-2">
         <span>
-          <i className="ri-subtract-line rounded btn-quantity"></i>
+          <i
+            onClick={decreQuanlity}
+            className="ri-subtract-line rounded btn-quantity cursor-pointer"
+          ></i>
         </span>
         <input
-          type="number"
+          type="text"
           className="rounded border border-1 ps-3 fw-light fs-6"
           style={{ width: "4rem" }}
-          value={item.quanlity}
-          onChange={(e) => updateQuantity(parseInt(e.target.value))}
+          value={editQuanlity ? item.quanlity : quanlity}
+          onClick={() => handleEditQuanlity()}
+          onChange={(e) => setQuantity(e.target.value)}
+          onFocus={() => setQuantity("")}
+          onBlur={() => handleBlur}
         />
         <span>
-          <i className="ri-add-line rounded btn-quantity"></i>
+          <i
+            onClick={increQuanlity}
+            className="ri-add-line rounded btn-quantity cursor-pointer"
+          ></i>
         </span>
       </Col>
       <Col xs="6" md="auto" className="text-end pe-5 p-md-0 ps-xl-5 order-3">
@@ -69,16 +94,13 @@ function Cart() {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const totalPrice = useSelector((state) => state.cart.totalAmount);
   const totalQuanlity = useSelector((state) => state.cart.totalQuanlity);
-  const props = {
-    open: () => {},
-  };
+
   const [methodShipping, setMethodShipping] = useState(1);
 
   const checkout = () => {
     if (hasLogin()) {
       console.log("Checkouted");
     } else {
-      props.open();
     }
   };
 

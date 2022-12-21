@@ -23,6 +23,10 @@
   margin-right: 2rem;
 }
 
+.product-cart input {
+  font-family: "Open Sans", sans-serif;
+}
+
 @media (max-width: 992px) {
   .rounded-summary {
     border-bottom-left-radius: 0.4rem;

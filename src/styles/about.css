@@ -45,7 +45,7 @@ img {
   cursor: default;
 }
 
-img:hover {
+.m-img:hover {
   scale: 1.1;
 }
 
@@ -84,6 +84,8 @@ img:hover {
 
 span {
   font-size: var(--heading-fontSize);
+  position: relative;
+  display: inline-block;
 }
 
 .waviy:hover > span{ 

@@ -12,7 +12,7 @@ function About() {
                     <hr id='l1' className='line-header' />
                 </div>
                 <div className='col-md-4'>
-                    <h1 className='p-2 fw-bold text-center title'>CÔNG TY TNHH INWOOD</h1>
+                    <h1 className='p-2 fw-bold text-center title m-h1'>CÔNG TY TNHH INWOOD</h1>
                 </div>
                 <div className='col-md-4'>
                     <hr id='l2' className='line-header' />
@@ -40,12 +40,12 @@ function About() {
                         </p>
                     </div>
                     <div className='col-md-4'>
-                        <img whiile={{ scale: 1.2 }} className='img-fluid' src={group} />
+                        <img  className='img-fluid m-img' src={group} />
                     </div>
                 </div>
                 <div className='p-5 align-items-center row'>
                     <div className='col-md-4'>
-                        <img className='img-fluid' src={group} />
+                        <img className='img-fluid m-img' src={group} />
                     </div>
                     <div className='col-md-8'>
                         <div className='text-end fw-bold waviy'>
@@ -100,7 +100,7 @@ function About() {
                         </p>
                     </div>
                     <div className='col-md-4'>
-                        <img className='img-fluid' src={group} />
+                        <img className='img-fluid m-img' src={group} />
                     </div>
                 </div>
             </Container>

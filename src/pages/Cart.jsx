@@ -73,21 +73,6 @@ function Cart() {
     open: () => {},
   };
   const [methodShipping, setMethodShipping] = useState(1);
-  const [updated, setUpdated] = useState(false);
-
-  const update = () => {
-    setUpdated(!updated);
-  };
-
-  const removeItem = (item) => {
-    let index = props.items.indexOf(
-      props.items.filter((e) => e.id === item.id)[0]
-    );
-    if (index >= 0) {
-      props.items.splice(index, 1);
-    }
-    update();
-  };
 
   const checkout = () => {
     if (hasLogin()) {
@@ -110,10 +95,10 @@ function Cart() {
               <h2 className="fs-4 my-3">Chưa có sản phẩm trong giỏ hàng</h2>
             ) : (
               cartItems.map((item, index) => (
-                <>
+                <div key={index}>
                   <ProductCart item={item} />
                   <Divide />
-                </>
+                </div>
               ))
             )}
           </Col>

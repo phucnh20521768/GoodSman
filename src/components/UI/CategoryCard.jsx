@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function CategoryCard({ item }) {
   return (
     <motion.div
-      whileHover={{ scale: 1.033 }}
+      whileHover={{ scale: 1.01 }}
       className="shadow-lg text-center position-relative category-card"
     >
       <div

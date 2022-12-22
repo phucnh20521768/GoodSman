@@ -63,7 +63,7 @@ function Header() {
                       <NavLink
                         key={index}
                         className={(navClass) =>
-                          navClass.isActive ? "nav-link active" : ""
+                          navClass.isActive ? "nav-link active" : "nav-link "
                         }
                         to={item.path}
                       >

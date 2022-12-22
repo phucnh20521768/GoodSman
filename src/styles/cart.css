@@ -1,7 +1,10 @@
+.cart {
+  font-family: "Open Sans", sans-serif;
+}
+
 .cart-modal__summary {
   background-color: var(--secondary-color-3);
   padding: 2.5rem;
-  font-family: "Open Sans", sans-serif;
 }
 
 .cart-modal__summary .form-control {

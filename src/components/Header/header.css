@@ -27,10 +27,17 @@
   column-gap: 2.7rem;
 }
 
+.nav-link {
+  color: var(--primary-color-dark);
+}
 .nav-link.active {
   font-weight: bold;
   border-bottom: 2px solid;
   color: var(--primary-color-dark);
+}
+
+.nav-link:hover {
+  color: var(--white) !important;
 }
 
 .nav-icons {
@@ -39,6 +46,9 @@
   column-gap: 2rem;
 }
 
+.nav-icons .badge {
+  font-family: "Open Sans", sans-serif;
+}
 .icon {
   font-size: 1.675rem;
 }

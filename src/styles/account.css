@@ -1,6 +1,14 @@
 .account-section {
+  min-width: 500px;
   width: 25vw;
   margin: 0 auto;
   padding-top: 20vh;
   height: 100vh;
+}
+
+@media (max-width: 575.98px) {
+  .account-section {
+    width: 100%;
+    min-width: 0;
+  }
 }

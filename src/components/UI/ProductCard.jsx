@@ -26,18 +26,15 @@ function ProductCard({ item, index }) {
     toast.success("Thêm thành công");
   };
   return (
-    <>
+    <motion.div whileHover={{ scale: 1.05 }}>
       <Card
+        whileHover={{ scale: 1.2 }}
         className="product-item"
         style={{ backgroundColor: colors[index % colors.length] }}
       >
         <div className="product-item__img ">
-          <Link to={"/shop/" + item.id}>
-            <motion.img
-              whileHover={{ scale: 1.1 }}
-              className="img-fluid"
-              src={item.imgThumb}
-            />
+          <Link to={"/products/" + item.id}>
+            <img className="img-fluid" src={item.imgThumb} />
           </Link>
         </div>
 
@@ -64,7 +61,7 @@ function ProductCard({ item, index }) {
           </div>
         </Card.Body>
       </Card>
-    </>
+    </motion.div>
   );
 }
 

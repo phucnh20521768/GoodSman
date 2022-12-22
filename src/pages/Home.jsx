@@ -118,7 +118,6 @@ function Home() {
             <Col lg="6">
               <div className="product-best-sell__content">
                 <div className="product-best-sell__content--title">
-                  <h4 className="fs-5 mb-2">Limited offer</h4>
                   <h3 className="fs-3 mb-3">Sản phẩm cực Hot</h3>
                 </div>
                 <div className="product-best-sell__content--clock my-4">

@@ -6,16 +6,7 @@ import { hasLogin } from "../database/Auth/Auth";
 import { cartActions } from "../redux/slices/cartSlice";
 import { useSelector, useDispatch } from "react-redux";
 import numeral from "numeral";
-
-function Divide() {
-  return (
-    <>
-      <div className="d-flex">
-        <hr className="my-auto flex-grow-1"></hr>
-      </div>
-    </>
-  );
-}
+import Divide from "../components/UI/Divide";
 
 function ProductCart({ item }) {
   const [quanlity, setQuantity] = useState("");
@@ -62,7 +53,7 @@ function ProductCart({ item }) {
           type="text"
           className="rounded border border-1 ps-3 fw-light fs-6"
           style={{ width: "4rem" }}
-          value={editQuanlity ? item.quanlity : quanlity}
+          value={item.quanlity}
           onClick={() => handleEditQuanlity()}
           onChange={(e) => setQuantity(e.target.value)}
           onFocus={() => setQuantity("")}
@@ -176,7 +167,7 @@ function Cart() {
             </div>
 
             <button
-              className="col-12 btn btn-checkout text-uppercase shadow-lg"
+              className="col-12 btn btn-checkout text-uppercase fw-bold"
               onClick={checkout}
             >
               Đặt hàng

@@ -32,22 +32,22 @@ function Clock() {
     <div className="clock-wrapper d-flex align-items-center gap-4">
       <div className="clock-data">
         <h1 className="clock-data--digit">{day}</h1>
-        <h1 className="clock-data--string">Days</h1>
+        <h1 className="clock-data--string">Ngày</h1>
       </div>
       <span className="clock-data--dot">:</span>
       <div className="clock-data">
         <h1 className="clock-data--digit">{hour}</h1>
-        <h1 className="clock-data--string">Hours</h1>
+        <h1 className="clock-data--string">Giờ</h1>
       </div>
       <span className="clock-data--dot">:</span>
       <div className="clock-data">
         <h1 className="clock-data--digit">{minute}</h1>
-        <h1 className="clock-data--string">Minutes</h1>
+        <h1 className="clock-data--string">Phút</h1>
       </div>
       <span className="clock-data--dot">:</span>
       <div className="clock-data">
         <h1 className="clock-data--digit">{second}</h1>
-        <h1 className="clock-data--string">Seconds</h1>
+        <h1 className="clock-data--string">Giây</h1>
       </div>
     </div>
   );

@@ -6,10 +6,6 @@
   border: none;
 }
 
-.product-item:hover {
-  scale: 1.1;
-}
-
 .product-item__img {
   padding: 2rem 4rem;
   height: 300px;

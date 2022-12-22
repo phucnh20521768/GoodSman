@@ -48,7 +48,7 @@ function ProductDetails() {
         <Container>
           <Row className="p-4">
             <Col lg="6" className="px-4">
-              <div className="border text-center">
+              <div className="border border-dark border-3 text-center">
                 <motion.img
                   whileHover={{ scale: 1.02 }}
                   src={product.imgThumb}

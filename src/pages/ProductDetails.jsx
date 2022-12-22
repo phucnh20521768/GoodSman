@@ -9,10 +9,25 @@ import products from "../assets/data/product";
 import Helmet from "../components/Helmet/Helmet";
 import Divide from "../components/UI/Divide";
 import numeral from "numeral";
+import { cartActions } from "../redux/slices/cartSlice";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 function ProductDetails() {
   const { id } = useParams();
   const product = products.find((item) => item.id === id);
+  const dispatch = useDispatch();
+  const addToCart = () => {
+    dispatch(
+      cartActions.addItem({
+        id: product.id,
+        productName: product.productName,
+        price: product.price,
+        imgThumb: product.imgThumb,
+      })
+    );
+    toast.success("Thêm thành công");
+  };
   return (
     <Helmet>
       <section>
@@ -62,14 +77,14 @@ function ProductDetails() {
               <p className="my-5 display-5 fw-bold">
                 {numeral(product.price).format("0,0[.]00")}đ
               </p>
-              <Link to="/shop">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  className="btn btn-primary btn-lg opacity-100 fw-bold"
-                >
-                  Thêm vào giỏ hàng
-                </motion.button>
-              </Link>
+
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                className="btn btn-primary btn-lg opacity-100 fw-bold"
+                onClick={addToCart}
+              >
+                Thêm vào giỏ hàng
+              </motion.button>
             </Col>
           </Row>
         </Container>

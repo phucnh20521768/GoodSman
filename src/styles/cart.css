@@ -1,6 +1,7 @@
 .cart-modal__summary {
   background-color: var(--secondary-color-3);
   padding: 2.5rem;
+  font-family: "Open Sans", sans-serif;
 }
 
 .cart-modal__summary .form-control {
@@ -45,11 +46,12 @@
   border: 0;
   margin-top: 1rem;
   padding: 1rem 3rem;
+  font-family: "Open Sans", sans-serif;
 }
 
 .btn-checkout:hover {
   opacity: 1;
-  color: var(--black);
+  color: var(--primary-color-dark);
   background-color: var(--white);
 }
 

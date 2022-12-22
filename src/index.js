@@ -26,6 +26,7 @@ root.render(
           newestOnTop={false}
           closeOnClick
           rtl={false}
+
           pauseOnFocusLoss
           draggable
           pauseOnHover={false}

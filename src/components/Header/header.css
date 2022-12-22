@@ -51,7 +51,7 @@
 }
 
 .nav-link:hover {
-  color: var(--white) !important;
+  color: var(--black) !important;
 }
 
 .nav-icons {
@@ -60,9 +60,6 @@
   column-gap: 2rem;
 }
 
-.nav-icons .badge {
-  font-family: "Open Sans", sans-serif;
-}
 .icon {
   font-size: 1.675rem;
 }
@@ -83,7 +80,6 @@
 
 @media (max-width: 991.98px) {
   .nav-link {
-    margin: 1.125rem;
   }
 }
 

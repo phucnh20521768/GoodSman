@@ -51,11 +51,13 @@
 
 .title:hover {
   text-transform: uppercase;
-  background-image: linear-gradient(-225deg,
-      var(--primary-color-dark) 0%,
-      #44107a 29%,
-      #ff1361 67%,
-      #fff800 100%);
+  background-image: linear-gradient(
+    -225deg,
+    var(--primary-color-dark) 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
   background-size: auto auto;
   background-clip: border-box;
   background-size: 200% auto;
@@ -73,9 +75,6 @@
 }
 
 @media (max-width: 992px) {
-  .row>* {
-    width: 100%;
-  }
   .m-img:hover {
     scale: 1;
   }
@@ -88,14 +87,11 @@
 }
 
 @media (max-width: 768px) {
-  .p-5 {
-    padding: 2rem 0!important;
-  }
   .m-img {
     display: none;
   }
   .text-end {
-    text-align: left!important;
+    text-align: left !important;
   }
   .align-end {
     margin-left: 0;
@@ -104,7 +100,7 @@
 
 @media (max-width: 500px) {
   .span-animation {
-    font-size: 1.5rem!important;
+    font-size: 1.5rem !important;
   }
 }
 
@@ -118,20 +114,22 @@
   display: inline-block;
 }
 
-.waviy:hover > .span-animation{ 
+.waviy:hover > .span-animation {
   cursor: default;
   position: relative;
   display: inline-block;
   text-transform: uppercase;
   animation: waviy 1s infinite;
-  animation-delay: calc(.1s * var(--i));
+  animation-delay: calc(0.1s * var(--i));
 }
 
 @keyframes waviy {
-  0%,40%,100% {
-    transform: translateY(0)
+  0%,
+  40%,
+  100% {
+    transform: translateY(0);
   }
   20% {
-    transform: translateY(-20px)
+    transform: translateY(-20px);
   }
 }

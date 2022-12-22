@@ -1,7 +1,21 @@
 .header {
   width: 100%;
-  background-color: var(--hero-bg);
+
   min-width: 360px;
+}
+
+.header__bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: var(--hero-bg);
+  opacity: 0.7;
 }
 
 .nav-wrapper {

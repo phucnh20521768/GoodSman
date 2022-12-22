@@ -33,6 +33,9 @@ function Header() {
   return (
     <header className="header sticky-top">
       <Container>
+        <Container>
+          <div className="header__bg"></div>
+        </Container>
         <Row>
           <Col>
             <Navbar key="lg" expand="lg" className="my-2">

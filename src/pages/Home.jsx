@@ -57,9 +57,7 @@ function Home() {
                 <h1 className="fw-bold display-6">
                   HIỆN THỰC HÓA ƯỚC MƠ CÔNG NGHỆ
                 </h1>
-                <p className="my-5 h6">
-                  Đổi mới sáng tạo, truy cầu sự hoàn hảo
-                </p>
+                <p className="my-5">Đổi mới sáng tạo, truy cầu sự hoàn hảo</p>
                 <Link to="/shop">
                   <motion.button
                     whileTap={{ scale: 1.2 }}

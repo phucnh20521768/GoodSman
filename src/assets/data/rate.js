@@ -25,6 +25,7 @@ const rate = [
         comment: "Hãy hướng về phía mặt trời và bạn sẽ không bao giờ nhìn thấy bóng tối. Hãy hướng về Wibu Store và bạn sẽ không thấy nhàm chán cuộc sống nữa.",
         rate: 4.7
     },
+
 ]
 
 export default rate;

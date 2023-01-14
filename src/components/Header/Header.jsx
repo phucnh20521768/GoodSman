@@ -61,7 +61,7 @@ function Header() {
                   </Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                  <Nav className="justify-content-center flex-grow-1 pe-3 nav">
+                  <Nav className="justify-content-center flex-grow-1 pe-3 nav gap-lg-3 gap-xl-5">
                     {nav_links.map((item, index) => (
                       <NavLink
                         key={index}

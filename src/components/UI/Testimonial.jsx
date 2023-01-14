@@ -40,11 +40,13 @@ function Testimonial({ data }) {
                 <div className="my-1">
                   <StarRatings
                     rating={item.rate}
-                    starRatedColor="#FFC107"
+                    starRatedColor="#ffd800"
                     numberOfStars={5}
                     name="rating"
-                    starDimension="20px"
-                    starSpacing="1px"
+                    starDimension="24px"
+                    starSpacing="2px"
+                    svgIconViewBox="0 0 24 24"
+                    svgIconPath="M12 18.26l-7.053 3.948 1.575-7.928L.587 8.792l8.027-.952L12 .5l3.386 7.34 8.027.952-5.935 5.488 1.575 7.928z"
                   />
                 </div>
                 <h5 className="mt-lg-3 fw-bold">{item.name}</h5>

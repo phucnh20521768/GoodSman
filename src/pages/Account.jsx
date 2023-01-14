@@ -11,6 +11,7 @@ import {
 } from "../database/Auth/PasswordAuth";
 import icon_google from "../assets/images/icon_google.png";
 import "../styles/account.css";
+import Helmet from "../components/Helmet/Helmet";
 
 function Account() {
   const [inputEmail, setEmail] = useState(null);
@@ -29,11 +30,13 @@ function Account() {
   };
 
   return (
-    <>
-      <section className="account-section">
-        <div className="hero-section__bg"></div>
-        <div className="container bg-white rounded p-5">
-          <div className="row col-xs-12 col-lg-12">
+    <Helmet title="Login">
+      <section className="account-section position-relative">
+        <Container>
+          <div className="hero-section__bg"></div>
+        </Container>
+        <div className="account-section__form container bg-white rounded py-5 p-sm-5">
+          <div className="row col-xs-12 col-lg-12 m-0">
             <span className="col-12 text-center">
               <i className="ri-lock-2-line icon"></i>
             </span>
@@ -81,7 +84,7 @@ function Account() {
           </div>
         </div>
       </section>
-    </>
+    </Helmet>
   );
 }
 

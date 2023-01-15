@@ -58,7 +58,7 @@ function Home() {
                   HIỆN THỰC HÓA ƯỚC MƠ CÔNG NGHỆ
                 </h1>
                 <p className="my-5">Đổi mới sáng tạo, truy cầu sự hoàn hảo</p>
-                <Link to="/products">
+                <Link reloadDocument to="/products">
                   <motion.button
                     whileTap={{ scale: 1.2 }}
                     className="btn btn-primary btn-lg"

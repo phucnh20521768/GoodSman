@@ -7,10 +7,13 @@ import productData from "../assets/data/product";
 import categoryData from "../assets/data/category";
 import StarRatings from "react-star-ratings";
 import ProductList from "../components/UI/ProductList";
+import { useState } from "react";
 
 function Products() {
-  const products = productData;
+  const [products, setProducts] = useState(productData);
+
   const categories = categoryData;
+  const handleFilter = (e) => {};
   return (
     <Helmet title={"Products"}>
       <section className="my-3">
@@ -29,7 +32,7 @@ function Products() {
       <section className="products__filter">
         <Container>
           <Row>
-            <Col xs="3" className="">
+            <Col sm="3" className="">
               <div className="filter-card mb-3">
                 <h5 className="filter-title">Shop by category</h5>
                 <div>
@@ -108,6 +111,7 @@ function Products() {
                   <div className="d-flex align-items-center gap-3">
                     <p className="mb-0 d-block">Lọc theo:</p>
                     <select
+                      onChange={handleFilter}
                       className="form-control form-select"
                       aria-label=".form-select"
                     >

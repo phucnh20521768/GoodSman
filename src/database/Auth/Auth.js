@@ -1,20 +1,17 @@
-let _user = null
-let _token = null
+const user = () => sessionStorage.getItem("auth_user")
 
-const user = () => _user
-
-const token = () => _token
+const token = () => sessionStorage.getItem("auth_token")
 
 const SignOut = () => {
-    _user = null
-    _token = null
+    sessionStorage.removeItem("auth_user")
+    sessionStorage.removeItem("auth_token")
 }
 
 const SignIn = (user, token = null) => {
-    _user = user
-    _token = token
+    sessionStorage.setItem("auth_user", user)
+    sessionStorage.setItem("auth_token", token)
 }
 
-const hasLogin = () => _user != null
+const hasLogin = () => user() != null
 
 export { user, token, hasLogin, SignOut, SignIn }

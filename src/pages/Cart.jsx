@@ -90,9 +90,9 @@ function Cart() {
 
   const checkout = () => {
     if (hasLogin()) {
-      window.location.href = "/Checkout"
+      window.location.href = "/checkout"
     } else {
-      window.location.href = "/Account"
+      window.location.href = "/account?redirect=/checkout"
     }
   };
 

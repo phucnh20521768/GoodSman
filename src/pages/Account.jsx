@@ -45,7 +45,7 @@ function Account() {
     if (resultSubmit)
       e.target.submit()
     else {
-      toast.success("Đăng nhập sai email/password");
+      toast.error("Đăng nhập sai email/password");
     }
     return false
   }

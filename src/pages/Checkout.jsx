@@ -6,24 +6,83 @@ import { hasLogin } from "../database/Auth/Auth";
 import { useSelector } from "react-redux";
 import numeral from "numeral";
 import Divide from "../components/UI/Divide";
+import { user } from "../database/Auth/Auth"
+import "../assets/data/local.js"
+import Country from "../assets/data/local.js";
+import { toast } from "react-toastify";
 
 function Checkout() {
+  if (!hasLogin())
+    window.location.href = "/account?redirect=/checkout"
   const totalPrice = useSelector((state) => state.cart.totalAmount);
   const totalQuanlity = useSelector((state) => state.cart.totalQuanlity);
+  const cartItems = useSelector((state) => state.cart.cartItems)
+  const [province, setProvince] = useState();
+  const [district, setDistrict] = useState();
+
+  const loginInfo = user()
+  const name = loginInfo.displayName
+  const email = loginInfo.email
+  const phoneNumber = loginInfo.phoneNumber
 
   const [methodShipping, setMethodShipping] = useState(1);
+  const [discountCode, setDiscountCode] = useState();
 
-  const checkout = () => {
-    if (hasLogin()) {
-      console.log("Checkouted");
-    } else {
+  const onSubmit = async (e) => {
+    e.preventDefault()
+    const bill = {
+      name: e.target.querySelector('input[name="nameCustomer"]').value,
+      email: e.target.querySelector('input[name="emailCustomer"]').value,
+      phone: e.target.querySelector('input[name="phoneCustomer"]').value,
+      province: province,
+      district: district,
+      ward: e.target.querySelector('select[name="wardShipping"]').value,
+      address: e.target.querySelector('input[name="addressShipping"]').value,
+      paymentMethod: Array.from(e.target.querySelectorAll('input[name="methodPayment"]')).find(item => item.checked)?.id,
+      note: e.target.querySelector('textarea').value,
+      products: JSON.stringify(cartItems),
+      totalPrice: totalPrice,
+      methodShipping: methodShipping,
+      discountCode: discountCode
     }
-  };
+
+    //check validation bill
+    if (bill.phone.length !== 10 || isNaN(parseInt(bill.phone)) || bill.phone[0] !== "0")
+      toast.error("Số điện thoại không hợp lệ")
+    if (bill.province === undefined || bill.district === undefined || bill.ward === "Phường/Xã" || bill.address === undefined)
+      toast.warning("Vui lòng điền địa chỉ nhận hàng")
+    if (bill.paymentMethod === undefined)
+      toast.warning("Vui lòng chọn phương thức thanh toán")
+
+    // var resultSubmitBill = false
+
+    // if(await resultSubmitBill(bill)){
+    //   e.target.submit()
+    // }
+    // else {
+    //   toast...
+    // }
+
+    return false
+  }
+
+  const checkDiscountCode = async (e) => {
+    const code = e.target.value
+
+    // if (await checkDiscountCode(code)) {
+    //   setDiscountCode(code)
+    // }
+    // else {
+    //   toast...
+    // }
+
+    setDiscountCode(code)
+  }
 
   return (
     <Helmet title="Cart">
       <section className="cart">
-        <form>
+        <form action="/" onSubmit={onSubmit}>
           <Container>
             <Row className="">
               <Col className="col-lg-8 col-12 p-xl-5 py-5">
@@ -32,34 +91,34 @@ function Checkout() {
                 </div>
                 <label for="infoCustomerField" className="form-label"><div className="d-flex"><span className="me-1"><i className="ri-profile-line"></i></span><p>Thông tin khách hàng</p></div></label>
                 <div id="infoCustomerField">
-                  <input type="text" className="form-control" id="nameCustomer" required placeholder="Họ và tên"></input>
-                  <input type="email" className="form-control my-2" id="emailCustomer" placeholder="Địa chỉ email"></input>
-                  <input type="tel" className="form-control" id="phoneCustomer" required placeholder="Số điện thoại"></input>
+                  <input type="text" className="form-control" name="nameCustomer" required placeholder="Họ và tên" defaultValue={name ?? ''}></input>
+                  <input type="email" className="form-control my-2" name="emailCustomer" placeholder="Địa chỉ email" defaultValue={email ?? ''}></input>
+                  <input type="tel" className="form-control phone" name="phoneCustomer" required placeholder="Số điện thoại" defaultValue={phoneNumber ?? ''} onInvalid={e => e.target.setCustomValidity('Số điện thoại Việt Nam có 10 số!')} onInput={e => e.target.setCustomValidity('')}></input>
                 </div>
                 <label for="addressField" className="form-label mt-2"><div className="d-flex"><span className="me-1"><i className="ri-truck-fill"></i></span><p>Địa chỉ nhận hàng</p></div></label>
                 <div id="addressField" className="container">
                   <div className="row">
                     <div className="d-flex justify-content-between col-md-6 col-12 p-0">
-                      <input type="text" className="form-control" required id="addressCustomer" placeholder="Địa chỉ nhà"></input>
-                      <select className="form-select form-select-md">
+                      <input type="text" className="form-control" required name="addressShipping" placeholder="Địa chỉ nhà"></input>
+                      <select name="wardShipping" className="form-select form-select-md">
                         <option selected>Phường/Xã</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        {
+                          Country.find(item => item.name === province)?.districts.find(item => item.name === district)?.wards.map(ward => <option value={ward.name}>{ward.name}</option>)
+                        }
                       </select>
                     </div>
                     <div className="d-flex justify-content-between col-md-6 col-12 p-0">
-                      <select className="form-select form-select-md">
+                      <select className="form-select form-select-md" onChange={e => setDistrict(e.target.value)}>
                         <option selected>Quận/Huyện</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        {
+                          Country.find(item => item.name === province)?.districts.map(district => <option value={district.name}>{district.name}</option>)
+                        }
                       </select>
-                      <select className="form-select form-select-md">
+                      <select className="form-select form-select-md" onChange={e => setProvince(e.target.value)}>
                         <option selected>Tỉnh/Thành phố</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        {
+                          Country.map(province => <option value={province.name}>{province.name}</option>)
+                        }
                       </select>
                     </div>
                   </div>
@@ -111,7 +170,7 @@ function Checkout() {
                   </div>
 
                 </div>
-                <textarea className="form-control mt-2" id="note" rows="3" placeholder="Ghi chú"></textarea>
+                <textarea className="form-control mt-2" rows="3" placeholder="Ghi chú"></textarea>
               </Col>
               <Col className="col-lg-4 col-12 cart-modal__summary fw-bold">
                 <div className="mb-5">
@@ -149,9 +208,10 @@ function Checkout() {
                         <input
                           type="text"
                           className="form-control"
-                          placeholder="Nhập mã  "
-                          aria-label="Username"
+                          placeholder="Nhập mã"
                           aria-describedby="addon-wrapping"
+                          value={discountCode}
+                          onChange={checkDiscountCode}
                         ></input>
                       </div>
                     </div>
@@ -167,7 +227,6 @@ function Checkout() {
                 <button
                   type="submit"
                   className="col-12 btn btn-checkout text-uppercase fw-bold"
-                  onClick={checkout}
                 >
                   Đặt hàng
                 </button>

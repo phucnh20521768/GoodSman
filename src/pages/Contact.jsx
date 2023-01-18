@@ -64,8 +64,13 @@ function Contact() {
                         <p className='pb-4'>info@inwoodshop.com</p>
                     </div>
                     <div className='col-md-6'>
-                        <iframe title='domA' className='py-2' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.1229824564284!2d106.80410191533453!3d10.878249660279236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d8a5f4e477e9%3A0x29d5aeb365cee20b!2zS8O9IHTDumMgeMOhIEtodSBBIMSQSCBRdeG7kWMgZ2lhIFRQLiBI4buTIENow60gTWluaA!5e0!3m2!1svi!2s!4v1673957670991!5m2!1svi!2s" width="100%" height="200" ></iframe>
-                        <iframe title='domB' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.073052125916!2d106.78039021533458!3d10.88204836020959!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d89aad780e49%3A0x54542761d4c22175!2zS8O9IHTDumMgeMOhIEtodSBCIMSQ4bqhaSBo4buNYyBRdeG7kWMgZ2lhIFRQLkhDTQ!5e0!3m2!1svi!2s!4v1673958470765!5m2!1svi!2s" width="100%" height="200"></iframe>
+                        <div className='p-2'>
+                        <iframe title='domA'  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.1229824564284!2d106.80410191533453!3d10.878249660279236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d8a5f4e477e9%3A0x29d5aeb365cee20b!2zS8O9IHTDumMgeMOhIEtodSBBIMSQSCBRdeG7kWMgZ2lhIFRQLiBI4buTIENow60gTWluaA!5e0!3m2!1svi!2s!4v1673957670991!5m2!1svi!2s" width="100%" height="200" ></iframe>
+                      </div>
+                        <div className='p-2'>
+                        <iframe title='domB'  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.073052125916!2d106.78039021533458!3d10.88204836020959!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d89aad780e49%3A0x54542761d4c22175!2zS8O9IHTDumMgeMOhIEtodSBCIMSQ4bqhaSBo4buNYyBRdeG7kWMgZ2lhIFRQLkhDTQ!5e0!3m2!1svi!2s!4v1673958470765!5m2!1svi!2s" width="100%" height="200"></iframe>
+                        
+                        </div>   
                     </div>
                 </div>
             </Container>

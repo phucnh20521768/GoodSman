@@ -26,6 +26,10 @@ const nav_links = [
     path: "contact",
     display: "Liên hệ",
   },
+  {
+    path: "location",
+    display: "Địa chỉ",
+  },
 ];
 
 function Header() {

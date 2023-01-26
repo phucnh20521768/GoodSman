@@ -79,7 +79,7 @@ function ProductDetails() {
               </div>
               <div className="my-3">
                 <h5 className="fw-bold mb-2">Đánh giá chung</h5>
-                <div className="d-flex align-items-center mb-3 gap-5">
+                <div className="d-flex align-items-center mb-3 gap-2">
                   <span>
                     <StarRatings
                       rating={product.avgRating}
@@ -92,7 +92,6 @@ function ProductDetails() {
                       svgIconPath="M12 18.26l-7.053 3.948 1.575-7.928L.587 8.792l8.027-.952L12 .5l3.386 7.34 8.027.952-5.935 5.488 1.575 7.928z"
                     />
                   </span>
-
                   <p className="fw-light pt-1">({product.avgRating} ratings)</p>
                 </div>
               </div>
@@ -146,7 +145,7 @@ function ProductDetails() {
                     {product.reviews?.map((item, index) => (
                       <li key={index} className="p-3">
                         <h5>{item.name}</h5>
-                        <div className="d-flex align-items-center gap-5">
+                        <div className="d-flex align-items-center gap-2">
                           <span>
                             <StarRatings
                               rating={item.rating}

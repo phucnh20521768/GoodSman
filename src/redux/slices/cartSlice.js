@@ -80,6 +80,9 @@ const cartSlice = createSlice({
             }
             setSession(state)
         },
+        resetCart: (state, action) =>{
+            setSession(_initialState)
+        }
     }
 });
 

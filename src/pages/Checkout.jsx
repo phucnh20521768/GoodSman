@@ -10,6 +10,8 @@ import { user } from "../database/Auth/Auth"
 import "../assets/data/local.js"
 import Country from "../assets/data/local.js";
 import { toast } from "react-toastify";
+import { cartActions } from "../redux/slices/cartSlice";
+import { useDispatch } from "react-redux";
 
 function Checkout() {
   if (!hasLogin())
@@ -17,6 +19,7 @@ function Checkout() {
   const totalPrice = useSelector((state) => state.cart.totalAmount);
   const totalQuanlity = useSelector((state) => state.cart.totalQuanlity);
   const cartItems = useSelector((state) => state.cart.cartItems)
+  const dispatch = useDispatch();
   const [province, setProvince] = useState();
   const [district, setDistrict] = useState();
 
@@ -28,8 +31,24 @@ function Checkout() {
   const [methodShipping, setMethodShipping] = useState(1);
   const [discountCode, setDiscountCode] = useState();
 
+  const RandomIdOrder = (length) => {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < length) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      counter += 1;
+    }
+    return result;
+  }
+
+  var timeoutSubmit = false
+
   const onSubmit = async (e) => {
     e.preventDefault()
+    if (timeoutSubmit)
+      return false
     const bill = {
       name: e.target.querySelector('input[name="nameCustomer"]').value,
       email: e.target.querySelector('input[name="emailCustomer"]').value,
@@ -47,12 +66,19 @@ function Checkout() {
     }
 
     //check validation bill
-    if (bill.phone.length !== 10 || isNaN(parseInt(bill.phone)) || bill.phone[0] !== "0")
+    var isValid = true
+    if (bill.phone.length !== 10 || isNaN(parseInt(bill.phone)) || bill.phone[0] !== "0") {
       toast.error("Số điện thoại không hợp lệ")
-    if (bill.province === undefined || bill.district === undefined || bill.ward === "Phường/Xã" || bill.address === undefined)
+      isValid = false
+    }
+    if (bill.province === undefined || bill.district === undefined || bill.ward === "Phường/Xã" || bill.address === undefined) {
       toast.warning("Vui lòng điền địa chỉ nhận hàng")
-    if (bill.paymentMethod === undefined)
+      isValid = false
+    }
+    if (bill.paymentMethod === undefined) {
       toast.warning("Vui lòng chọn phương thức thanh toán")
+      isValid = false
+    }
 
     // var resultSubmitBill = false
 
@@ -62,6 +88,18 @@ function Checkout() {
     // else {
     //   toast...
     // }
+
+    if (isValid) {
+      timeoutSubmit = true
+      toast.success(`Đã đặt hàng thành công\nMã đơn hàng: ${RandomIdOrder(6)}`, { duration: 5000 })
+      setTimeout(() => {
+        dispatch(
+          cartActions.resetCart({})
+        );
+        timeoutSubmit = false
+        e.target.submit()
+      }, 5000)
+    }
 
     return false
   }
@@ -92,28 +130,15 @@ function Checkout() {
                 <label for="infoCustomerField" className="form-label"><div className="d-flex"><span className="me-1"><i className="ri-profile-line"></i></span><p>Thông tin khách hàng</p></div></label>
                 <div id="infoCustomerField">
                   <input type="text" className="form-control" name="nameCustomer" required placeholder="Họ và tên" defaultValue={name ?? ''}></input>
-                  <input type="email" className="form-control my-2" name="emailCustomer" placeholder="Địa chỉ email" defaultValue={email ?? ''}></input>
-                  <input type="tel" className="form-control phone" name="phoneCustomer" required placeholder="Số điện thoại" defaultValue={phoneNumber ?? ''} onInvalid={e => e.target.setCustomValidity('Số điện thoại Việt Nam có 10 số!')} onInput={e => e.target.setCustomValidity('')}></input>
+                  <div className="d-flex">
+                    <input type="email" className="form-control my-2 me-2" name="emailCustomer" placeholder="Địa chỉ email" defaultValue={email ?? ''}></input>
+                    <input type="tel" className="form-control phone my-2" name="phoneCustomer" required placeholder="Số điện thoại" defaultValue={phoneNumber ?? ''} onInvalid={e => e.target.setCustomValidity('Số điện thoại Việt Nam có 10 số!')} onInput={e => e.target.setCustomValidity('')}></input>
+                  </div>
                 </div>
                 <label for="addressField" className="form-label mt-2"><div className="d-flex"><span className="me-1"><i className="ri-truck-fill"></i></span><p>Địa chỉ nhận hàng</p></div></label>
                 <div id="addressField" className="container">
                   <div className="row">
-                    <div className="d-flex justify-content-between col-md-6 col-12 p-0">
-                      <input type="text" className="form-control" required name="addressShipping" placeholder="Địa chỉ nhà"></input>
-                      <select name="wardShipping" className="form-select form-select-md">
-                        <option selected>Phường/Xã</option>
-                        {
-                          Country.find(item => item.name === province)?.districts.find(item => item.name === district)?.wards.map(ward => <option value={ward.name}>{ward.name}</option>)
-                        }
-                      </select>
-                    </div>
-                    <div className="d-flex justify-content-between col-md-6 col-12 p-0">
-                      <select className="form-select form-select-md" onChange={e => setDistrict(e.target.value)}>
-                        <option selected>Quận/Huyện</option>
-                        {
-                          Country.find(item => item.name === province)?.districts.map(district => <option value={district.name}>{district.name}</option>)
-                        }
-                      </select>
+                    <div className="col-md-4 col-12">
                       <select className="form-select form-select-md" onChange={e => setProvince(e.target.value)}>
                         <option selected>Tỉnh/Thành phố</option>
                         {
@@ -121,7 +146,24 @@ function Checkout() {
                         }
                       </select>
                     </div>
+                    <div className="col-md-4 col-12">
+                      <select className="form-select form-select-md" onChange={e => setDistrict(e.target.value)}>
+                        <option selected>Quận/Huyện</option>
+                        {
+                          Country.find(item => item.name === province)?.districts.map(district => <option value={district.name}>{district.name}</option>)
+                        }
+                      </select>
+                    </div>
+                    <div className="col-md-4 col-12">
+                      <select name="wardShipping" className="form-select form-select-md">
+                        <option selected>Phường/Xã</option>
+                        {
+                          Country.find(item => item.name === province)?.districts.find(item => item.name === district)?.wards.map(ward => <option value={ward.name}>{ward.name}</option>)
+                        }
+                      </select>
+                    </div>
                   </div>
+                  <input type="text" className="form-control my-2" required name="addressShipping" placeholder="Địa chỉ nhà"></input>
                 </div>
                 <label for="paymentField" className="form-label mt-2"><div className="d-flex"><span className="me-1"><i className="ri-bank-card-fill"></i></span><p>Phương thức thanh toán</p></div></label>
                 <div id="paymentField" className="container">

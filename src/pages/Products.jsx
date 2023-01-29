@@ -7,13 +7,68 @@ import productData from "../assets/data/product";
 import categoryData from "../assets/data/category";
 import StarRatings from "react-star-ratings";
 import ProductList from "../components/UI/ProductList";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Enumerable from 'linq'
+import PriceSlider from '../components/UI/PriceSlider'
 
 function Products() {
   const [products, setProducts] = useState(productData);
-
   const categories = categoryData;
-  const handleFilter = (e) => {};
+
+  const [sort, setSort] = useState({ key: null, value: null });
+  const [filterCategory, setCategory] = useState(null);
+  const [filterPrice, setRangePrice] = useState({ min: 0, max: Number.MAX_VALUE });
+  const [filterRating, setRating] = useState(0);
+
+  const handleSort = (e) => {
+    const typeFilter = e.target.dataset['filter']
+    const valueFilter = e.target.value
+    setSort({ key: typeFilter, value: valueFilter })
+
+  }
+
+  const handleFilterCategory = (e) => {
+    const typeFilter = e.target.dataset['filter']
+    setCategory(typeFilter)
+  }
+
+  const handleFilterPrice = (e) => {
+    const min = parseFloat(document.getElementById('floatingInputFrom').value)
+    const max = parseFloat(document.getElementById('floatingInputTo').value)
+    setRangePrice({ min: isNaN(min) ? 0 : min, max: isNaN(max) ? Number.MAX_VALUE : max })
+  }
+
+  const handleFilterRating = (e) => {
+    const typeFilter = e.target.dataset['filter']
+    setRating(typeFilter)
+  }
+
+  const updateView = () => {
+    var filter = Enumerable.from(productData)
+      .where(item => filterCategory === null ? true : item.category === filterCategory)
+      .where(item => item.price >= filterPrice.min && item.price <= filterPrice.max)
+      .where(item => item.avgRating >= filterRating)
+    switch (sort.key) {
+      case "title":
+        if (sort.value === 'title-ascending')
+          filter = filter.orderBy(item => item.productName)
+        else if (sort.value === 'title-descending')
+          filter = filter.orderByDescending(item => item.productName)
+        break;
+      case "price":
+        if (sort.value === 'price-ascending')
+          filter = filter.orderBy(item => item.price)
+        else if (sort.value === 'price-descending')
+          filter = filter.orderByDescending(item => item.price)
+        break;
+      default:
+        break;
+    }
+    setProducts(filter.toArray())
+  }
+
+  useEffect(updateView)
+
   return (
     <Helmet title={"Products"}>
       <section className="my-3">
@@ -38,7 +93,7 @@ function Products() {
                 <div>
                   <ul>
                     {categories.map((item, index) => (
-                      <li key={index} className="text-capitalize">
+                      <li key={index} className="text-capitalize" onClick={handleFilterCategory} data-filter={item.categoryName}>
                         {item.categoryName}
                       </li>
                     ))}
@@ -50,27 +105,32 @@ function Products() {
                 <h5 className="filter-title">Filter by</h5>
                 <div>
                   <h6 className="sub-title">Price</h6>
-                  <div className="d-flex align-items-center gap-3">
-                    <div className="">
-                      <input
-                        type="email"
-                        class="form-control"
-                        id="floatingInputFrom"
-                        placeholder="From"
-                      />
+                  <div className="col">
+                    <div className="d-flex align-items-center gap-3">
+                      <div className="">
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="floatingInputFrom"
+                          placeholder="From"
+                        />
+                      </div>
+                      <div>
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="floatingInputTo"
+                          placeholder="To"
+                        />
+                      </div>
+                      <div>
+                        <button className="btn btn-primary opacity-100 py-2 px-4" onClick={handleFilterPrice}>
+                          <p>Đi</p>
+                        </button>
+                      </div>
                     </div>
                     <div>
-                      <input
-                        type="email"
-                        class="form-control"
-                        id="floatingInputTo"
-                        placeholder="To"
-                      />
-                    </div>
-                    <div>
-                      <button className="btn btn-primary opacity-100 py-2 px-4">
-                        <p>Đi</p>
-                      </button>
+                      <PriceSlider props={{ min: 0, max: 150 }} />
                     </div>
                   </div>
                 </div>
@@ -83,6 +143,8 @@ function Products() {
                           <li
                             key={index}
                             className="d-flex gap-1 align-items-center"
+                            onClick={handleFilterRating}
+                            data-filter={item}
                           >
                             <span>
                               <StarRatings
@@ -111,9 +173,10 @@ function Products() {
                   <div className="d-flex align-items-center gap-3">
                     <p className="mb-0 d-block">Lọc theo:</p>
                     <select
-                      onChange={handleFilter}
+                      onChange={handleSort}
                       className="form-control form-select"
                       aria-label=".form-select"
+                      data-filter="title"
                     >
                       <option selected>Bảng chữ cái</option>
                       <option value="title-ascending">A-Z</option>
@@ -122,6 +185,8 @@ function Products() {
                     <select
                       className="form-control form-select"
                       aria-label=".form-select"
+                      onChange={handleSort}
+                      data-filter="price"
                     >
                       <option selected>Giá tiền</option>
                       <option value="price-ascending">

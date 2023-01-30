@@ -45,10 +45,6 @@
   cursor: default;
 }
 
-.m-img:hover {
-  scale: 1.1;
-}
-
 .title:hover {
   text-transform: uppercase;
   background-image: linear-gradient(

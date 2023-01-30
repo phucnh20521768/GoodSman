@@ -41,9 +41,9 @@ function Header() {
             <Navbar key="lg" expand="lg" className="my-2">
               <Navbar.Brand href="#">
                 <div className="logo">
-                  <NavLink to="home">
+                  <Nav.Link href="home">
                     <img src={logo} className="img-fluid" alt="logo" />
-                  </NavLink>
+                  </Nav.Link>
                 </div>
               </Navbar.Brand>
               <Navbar.Toggle
@@ -61,9 +61,10 @@ function Header() {
                   </Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                  <Nav className="justify-content-center flex-grow-1 pe-3 nav">
+                  <Nav className="justify-content-center flex-grow-1 pe-3 nav gap-lg-3 gap-xl-5">
                     {nav_links.map((item, index) => (
                       <NavLink
+                        reloadDocument
                         key={index}
                         className={(navClass) =>
                           navClass.isActive ? "nav-link active" : "nav-link "

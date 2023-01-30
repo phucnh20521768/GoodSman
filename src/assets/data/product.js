@@ -36,7 +36,7 @@ const products = [
     id: "01",
     productName: "Stone and Beam Westview ",
     imgThumb: productImg01,
-    imgUrls: [productImg01],
+    imgUrls: [productImg01, productImg02, productImg03],
     category: "sofa",
     price: 1900000,
     isTrending: true,
@@ -46,8 +46,14 @@ const products = [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio nostrum accusantium iste, voluptas cumque provident! Consequatur officiis animi rem tempore voluptate cumque hic similique aperiam ut consectetur distinctio repudiandae quia quam quos, quas illo, iusto, necessitatibus odio veniam exercitationem quis voluptatibus debitis laboriosam! Esse debitis obcaecati blanditiis at impedit quibusdam!",
     reviews: [
       {
-        rating: 4.7,
+        name: "Mina",
+        rating: 4,
         text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      },
+      {
+        name: "Dio",
+        rating: 5,
+        text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.",
       },
     ],
     avgRating: 4.5,

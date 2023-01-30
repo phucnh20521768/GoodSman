@@ -6,12 +6,12 @@ import { Link } from "react-router-dom";
 import colors from "../../assets/data/colorCard";
 import numeral from "numeral";
 
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 import { useDispatch } from "react-redux";
 import { cartActions } from "../../redux/slices/cartSlice";
 
-function ProductCard({ item, index }) {
+function ProductCard({ item, index, isModifyWidth = { isModify: false } }) {
   const price = numeral(item.price);
   const dispatch = useDispatch();
   const addToCart = () => {
@@ -28,22 +28,32 @@ function ProductCard({ item, index }) {
   return (
     <motion.div whileHover={{ scale: 1.05 }}>
       <Card
-        whileHover={{ scale: 1.2 }}
         className="product-item"
         style={{ backgroundColor: colors[index % colors.length] }}
       >
-        <div className="product-item__img ">
-          <Link to={"/products/" + item.id}>
-            <img className="img-fluid" src={item.imgThumb} />
-          </Link>
+        <div
+          style={
+            isModifyWidth.isModify == true
+              ? { width: `${isModifyWidth.width}` }
+              : {}
+          }
+          className="product-item__img text-center"
+        >
+          <a href={"/products/" + item.id}>
+            <img
+              className="img-fluid"
+              src={item.imgThumb}
+              alt={item.productName}
+            />
+          </a>
         </div>
 
         <Card.Body className="product-item__des">
-          <Link to="/shop/id">
+          <a href={"/products/" + item.id}>
             <Card.Title className="product-item__des--title">
               {item.productName}
             </Card.Title>
-          </Link>
+          </a>
           <Card.Text className="product-item__des--cate fw-light">
             {item.category}
           </Card.Text>

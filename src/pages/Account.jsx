@@ -9,6 +9,7 @@ import {
 } from "../database/Auth/PasswordAuth";
 import icon_google from "../assets/images/icon_google.png";
 import "../styles/account.css";
+import Helmet from "../components/Helmet/Helmet";
 import { hasLogin } from "../database/Auth/Auth";
 import { toast } from "react-toastify";
 import { useSearchParams } from "react-router-dom";
@@ -49,7 +50,6 @@ function Account() {
     }
     return false
   }
-
   return hasLogin()
     ?
     <section className="account-section">

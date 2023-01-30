@@ -30,7 +30,7 @@ async function SignIn(email, password) {
 async function CreateAccount(email, password) {
     try {
         await createUserWithEmailAndPassword(auth, email, password)
-        SignIn(email, password)
+        await SignIn(email, password)
     } catch (error) {
         console.log("error login")
         return false

@@ -1,10 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = {
+const _initialState = {
     cartItems: [],
     totalAmount: 0,
     totalQuanlity: 0,
 }
+
+const getSession = () => {
+    return JSON.parse(sessionStorage.getItem("Cart")) ?? _initialState
+}
+
+const setSession = (state) => {
+    return sessionStorage.setItem("Cart", JSON.stringify(state))
+}
+
+const initialState = getSession()
 
 const cartSlice = createSlice({
     name: 'cart',
@@ -32,7 +42,7 @@ const cartSlice = createSlice({
             }
 
             state.totalAmount = state.cartItems.reduce((total, item) => total + Number(item.price) * Number(item.quanlity), 0);
-
+            setSession(state)
         },
         deleteItem: (state, action) => {
             const id = action.payload
@@ -43,6 +53,7 @@ const cartSlice = createSlice({
                 state.totalQuanlity -= existingItem.quanlity
                 state.totalAmount = state.cartItems.reduce((total, item) => total + Number(item.price) * Number(item.quanlity), 0);
             }
+            setSession(state)
         },
         increItemQuanlity: (state, action) => {
             const id = action.payload
@@ -54,6 +65,7 @@ const cartSlice = createSlice({
                 state.totalQuanlity++;
                 state.totalAmount = state.cartItems.reduce((total, item) => total + Number(item.price) * Number(item.quanlity), 0);
             }
+            setSession(state)
         },
         decreItemQuanlity: (state, action) => {
             const id = action.payload
@@ -66,7 +78,11 @@ const cartSlice = createSlice({
                 state.totalQuanlity--;
                 state.totalAmount = state.cartItems.reduce((total, item) => total + Number(item.price) * Number(item.quanlity), 0);
             }
+            setSession(state)
         },
+        resetCart: (state, action) =>{
+            setSession(_initialState)
+        }
     }
 });
 

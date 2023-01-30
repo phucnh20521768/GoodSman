@@ -9,7 +9,6 @@ import StarRatings from "react-star-ratings";
 import ProductList from "../components/UI/ProductList";
 import { useState, useEffect } from "react";
 import Enumerable from 'linq'
-import PriceSlider from '../components/UI/PriceSlider'
 
 function Products() {
   const [products, setProducts] = useState(productData);
@@ -35,12 +34,19 @@ function Products() {
   const handleFilterPrice = (e) => {
     const min = parseFloat(document.getElementById('floatingInputFrom').value)
     const max = parseFloat(document.getElementById('floatingInputTo').value)
-    setRangePrice({ min: isNaN(min) ? 0 : min, max: isNaN(max) ? Number.MAX_VALUE : max })
+    setRangePrice({ min: isNaN(min) ? 0 : min * 1000000, max: isNaN(max) ? Number.MAX_VALUE : max * 1000000 })
   }
 
   const handleFilterRating = (e) => {
     const typeFilter = e.target.dataset['filter']
     setRating(typeFilter)
+  }
+
+  const clearFilter = (e) => {
+    setSort({ key: null, value: null })
+    setCategory(null)
+    setRangePrice({ min: 0, max: Number.MAX_VALUE })
+    setRating(0)
   }
 
   const updateView = () => {
@@ -93,7 +99,7 @@ function Products() {
                 <div>
                   <ul>
                     {categories.map((item, index) => (
-                      <li key={index} className="text-capitalize" onClick={handleFilterCategory} data-filter={item.categoryName}>
+                      <li key={index} className={`text-capitalize ${filterCategory === item.categoryName ? "text-black" : ""}`} onClick={handleFilterCategory} data-filter={item.categoryName}>
                         {item.categoryName}
                       </li>
                     ))}
@@ -105,32 +111,27 @@ function Products() {
                 <h5 className="filter-title">Filter by</h5>
                 <div>
                   <h6 className="sub-title">Price</h6>
-                  <div className="col">
-                    <div className="d-flex align-items-center gap-3">
-                      <div className="">
-                        <input
-                          type="number"
-                          class="form-control"
-                          id="floatingInputFrom"
-                          placeholder="From"
-                        />
-                      </div>
-                      <div>
-                        <input
-                          type="number"
-                          class="form-control"
-                          id="floatingInputTo"
-                          placeholder="To"
-                        />
-                      </div>
-                      <div>
-                        <button className="btn btn-primary opacity-100 py-2 px-4" onClick={handleFilterPrice}>
-                          <p>Đi</p>
-                        </button>
-                      </div>
+                  <div className="d-flex align-items-center gap-3">
+                    <div className="">
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="floatingInputFrom"
+                        placeholder="From"
+                      />
                     </div>
                     <div>
-                      <PriceSlider props={{ min: 0, max: 150 }} />
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="floatingInputTo"
+                        placeholder="To"
+                      />
+                    </div>
+                    <div>
+                      <button className="btn btn-primary opacity-100 py-2 px-4" onClick={handleFilterPrice}>
+                        <p>Đi</p>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -196,6 +197,7 @@ function Products() {
                         Giá từ cao xuống thấp
                       </option>
                     </select>
+                    <button className="btn btn-primary btn-sm py-2 px-3 opacity-100" onClick={clearFilter}>Xóa lọc</button>
                   </div>
                 </div>
               </div>

@@ -50,12 +50,34 @@ function Account() {
     return false;
   };
   return hasLogin() ? (
-    <Helmet title="Account">
+<Helmet title="Account">
+    <section className="account-section">
+      <form
+        action={redirect === null ? "/account" : redirect}
+        onSubmit={onSubmit}
+      >
+        <div className="text-center">
+          <p>Bạn đã đăng nhập</p>
+          <button
+            type="submit"
+            className="my-3 btn btn-primary text-uppercase shadow-lg"
+            name="signOut"
+          >
+            <strong>Đăng xuất</strong>
+          </button>
+        </div>
+      </form>
+    </section>
+  ) : (
+    <>
       <section className="account-section">
         <form
           action={redirect === null ? "/account" : redirect}
           onSubmit={onSubmit}
-        >
+       
+          <div className="hero-section__bg"></div>
+        
+
           <div className="d-flex flex-column text-center">
             <p>Bạn đã đăng nhập</p>
             <button

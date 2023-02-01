@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import { Breadcrumb } from "react-bootstrap";
 import { motion } from "framer-motion";
 import StarRatings from "react-star-ratings";
-import products from "../assets/data/product";
 import Helmet from "../components/Helmet/Helmet";
 import Divide from "../components/UI/Divide";
 import numeral from "numeral";
@@ -17,16 +16,40 @@ import ImageGallery from "react-image-gallery";
 import { Form } from "react-bootstrap";
 import "react-image-gallery/styles/css/image-gallery.css";
 import ProductList from "../components/UI/ProductList";
+import products from "../assets/data/product";
+import { firebaseFirestore } from "../database/InstanceFiresbase";
+import { doc, deleteDoc, getDoc } from "@firebase/firestore";
+import { useState } from "react";
+import { useEffect } from "react";
+import { async } from "@firebase/util";
+import UseGetData from "../database/UseGetData";
 
 function ProductDetails() {
+  const [product, setProduct] = useState({});
+
+  const { data: productsData, loading } = UseGetData("products");
   const { id } = useParams();
-  const product = products.find((item) => item.id === id);
-  const images = product.imgUrls.map((item) => {
+
+  const docRef = doc(firebaseFirestore, "products", id);
+  useEffect(() => {
+    const getProduct = async () => {
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        setProduct(docSnap.data());
+      } else {
+        console.log("no product");
+      }
+    };
+
+    getProduct();
+  }, []);
+  const images = [product.imgThumb].map((item) => {
     return { original: item, thumbnail: item };
   });
-  const relatedProduct = products
-    .filter((item) => item.category === product.category && item !== product)
-    .slice(0, 8);
+  const relatedProduct = productsData.filter(
+    (item) => item.category === product.category && item !== product
+  );
+
   const dispatch = useDispatch();
   const addToCart = () => {
     dispatch(
@@ -139,7 +162,7 @@ function ProductDetails() {
                 </Tab>
                 <Tab
                   eventKey="profile"
-                  title={`Đánh giá sản phẩm (${product.reviews.length})`}
+                  title={`Đánh giá sản phẩm (${product.reviews?.length})`}
                 >
                   <ul>
                     {product.reviews?.map((item, index) => (

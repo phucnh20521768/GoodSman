@@ -10,8 +10,11 @@ import ProductList from "../components/UI/ProductList";
 import { useState, useEffect } from "react";
 import Enumerable from "linq";
 
-function Products() {
-  const [products, setProducts] = useState(productData);
+import PriceSlider from "../components/UI/PriceSlider";
+import UseGetData from "../database/UseGetData";
+function Products({ category }) {
+  const { data: productsData, loading } = UseGetData("products");
+  const [products, setProducts] = useState(productsData);
   const categories = categoryData;
 
   const [sort, setSort] = useState({ key: null, value: null });
@@ -30,6 +33,7 @@ function Products() {
 
   const handleFilterCategory = (e) => {
     const typeFilter = e.currentTarget.dataset["filter"];
+
     setCategory(typeFilter);
   };
 
@@ -43,6 +47,7 @@ function Products() {
   };
 
   const handleFilterRating = (e) => {
+
     const typeFilter = e.currentTarget.dataset["filter"];
     setRating(typeFilter);
   };
@@ -230,7 +235,11 @@ function Products() {
               </div>
               <div>
                 <Row className="my-2 g-3">
-                  <ProductList data={products} />
+                  {loading ? (
+                    <h5>Loading....</h5>
+                  ) : (
+                    <ProductList data={products} />
+                  )}
                 </Row>
               </div>
             </Col>

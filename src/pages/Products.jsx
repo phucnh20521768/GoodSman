@@ -1,9 +1,8 @@
 import React from "react";
-import { Col, Container, Row, Breadcrumb } from "react-bootstrap";
+import { Col, Container, Row, Breadcrumb, Form } from "react-bootstrap";
 import Helmet from "../components/Helmet/Helmet";
 import Divide from "../components/UI/Divide";
 import "../styles/products.css";
-import productData from "../assets/data/product";
 import categoryData from "../assets/data/category";
 import StarRatings from "react-star-ratings";
 import ProductList from "../components/UI/ProductList";
@@ -11,7 +10,7 @@ import { useState, useEffect } from "react";
 import Enumerable from "linq";
 
 import UseGetData from "../database/UseGetData";
-function Products({ category }) {
+function Products() {
   const { data: productsData, loading } = UseGetData("products");
   const [products, setProducts] = useState(productsData);
   const categories = categoryData;
@@ -58,7 +57,7 @@ function Products({ category }) {
   };
 
   const updateView = () => {
-    var filter = Enumerable.from(productData)
+    var filter = Enumerable.from(productsData)
       .where((item) =>
         filterCategory === null ? true : item.category === filterCategory
       )
@@ -222,6 +221,7 @@ function Products({ category }) {
                         Giá từ cao xuống thấp
                       </option>
                     </select>
+
                     <button
                       className="btn btn-primary btn-sm py-2 px-4 opacity-100"
                       onClick={clearFilter}

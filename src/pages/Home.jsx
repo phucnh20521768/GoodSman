@@ -18,6 +18,9 @@ import { Upload } from "../database/testConnection.js";
 import { collection, getDocs } from "firebase/firestore/lite";
 import { firebaseFirestore } from "../database/InstanceFiresbase";
 import { ProductModel } from "../database/Models/ProductModel.ts";
+import { NavLink } from "react-router-dom";
+
+import UseGetData from "../database/UseGetData";
 
 async function getProducts() {
   const mCollection = collection(firebaseFirestore, "/products").withConverter(
@@ -29,20 +32,22 @@ async function getProducts() {
 }
 
 function Home() {
+  const { data: productsData, loading } = UseGetData("products");
   const [trendingProducts, setTrendingProducts] = useState([]);
   const services = serviceData;
   const rates = rateData;
   const categories = categoryData;
+  const productData = productsData;
   const bestSellProduct =
-    productData[Math.floor(Math.random() * productData.length)];
+    productsData[Math.floor(Math.random() * productsData.length)];
 
   useEffect(() => {
-    const trendingProduct = productData.filter(
+    const trendingProduct = productsData.filter(
       (item) => item.isTrending === true
     );
 
     setTrendingProducts(trendingProduct);
-  }, []);
+  }, [productsData]);
 
   return (
     <Helmet title={"Home"}>
@@ -81,7 +86,7 @@ function Home() {
               <Row className="g-3">
                 {categories.map((item, index) => (
                   <Col lg="6" key={index}>
-                    <Link>
+                    <Link to="/products" reloadDocument>
                       <CategoryCard item={item} />
                     </Link>
                   </Col>
@@ -91,7 +96,7 @@ function Home() {
           </Row>
           <Row className="my-5">
             <Col className="text-center">
-              <Link to="/products">
+              <Link to="/products" reloadDocument>
                 <motion.button
                   whileTap={{ scale: 1.2 }}
                   className="btn btn-primary btn-lg opacity-100"
@@ -121,7 +126,7 @@ function Home() {
                 <div className="product-best-sell__content--clock my-4">
                   <Clock />
                 </div>
-                <Link to="/products">
+                <Link to="/products" reloadDocument>
                   <motion.button
                     whileTap={{ scale: 1.2 }}
                     className="btn btn-primary btn-lg opacity-100 fw-bold"
@@ -134,8 +139,8 @@ function Home() {
             <Col lg="6">
               <div className="text-end product-best-sell__img">
                 <img
-                  src={bestSellProduct.imgThumb}
-                  className="img-fluid  "
+                  src={bestSellProduct?.imgThumb}
+                  className="img-fluid "
                   alt=""
                 ></img>
               </div>
@@ -149,7 +154,11 @@ function Home() {
             <h1 className="fw-bold display-6">Sản phẩm được ưa thích</h1>
           </Row>
           <Row className="">
-            <ProductListHScroll data={trendingProducts} />
+            {loading ? (
+              <h5 className="fw-bold">Loading...</h5>
+            ) : (
+              <ProductListHScroll data={trendingProducts} />
+            )}
           </Row>
         </Container>
       </section>

@@ -16,6 +16,7 @@ import AddProduct from "../admin/AddProduct";
 import AllProduct from "../admin/AllProduct";
 import ProtetedRoute from "../routers/ProtetedRoute";
 import Dashboard from "../admin/Dashboard";
+import Users from "./Users";
 
 const admin_nav_links = [
   {
@@ -26,12 +27,9 @@ const admin_nav_links = [
     path: "dashboard/all-products",
     display: "Quản lý sản phẩm",
   },
+
   {
-    path: "dashboard/order",
-    display: "Quản lý hóa đơn",
-  },
-  {
-    path: "dashboard/user",
+    path: "dashboard/users",
     display: "Quản lý tài khoản",
   },
 ];
@@ -143,10 +141,10 @@ function AdminNav({ route }) {
   return (
     <div
       style={{
-        display: "flex",
         height: "100%",
         direction: isRTL ? "rtl" : "ltr",
       }}
+      className="d-lg-flex"
     >
       <Sidebar
         image="https://user-images.githubusercontent.com/25878302/144499035-2911184c-76d3-4611-86e7-bc4e8ff84ff5.jpg"
@@ -247,12 +245,12 @@ function AdminNav({ route }) {
             </span>
           )}
         </div>
-
         <Routes>
           <Route path="/*" element={<ProtetedRoute />}>
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="dashboard/all-products" element={<AllProduct />} />
             <Route path="dashboard/add-products" element={<AddProduct />} />
+            <Route path="dashboard/users" element={<Users />} />
           </Route>
         </Routes>
       </div>

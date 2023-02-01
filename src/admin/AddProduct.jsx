@@ -7,6 +7,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { collection, addDoc } from "firebase/firestore";
+import Helmet from "../components/Helmet/Helmet";
 import {
   firebaseFirestore,
   firebaseStorage,
@@ -43,7 +44,6 @@ function AddProduct() {
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
             await addDoc(docRef, {
-              id: "99",
               productName: enterTilte,
               imgThumb: downloadURL,
               category: enterCategory,
@@ -51,8 +51,18 @@ function AddProduct() {
               isTrending: false,
               shortDesc: enterShortDecs,
               description: enterDecs,
-
-              reviews: [],
+              reviews: [
+                {
+                  name: "Mina",
+                  rating: 4,
+                  text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+                },
+                {
+                  name: "Dio",
+                  rating: 5,
+                  text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+                },
+              ],
               avgRating: 5,
             });
           });
@@ -68,7 +78,7 @@ function AddProduct() {
   };
 
   return (
-    <>
+    <Helmet title={"Thêm sản phẩm"}>
       <section className="my-3">
         <Container fluid>
           <Row>
@@ -196,7 +206,7 @@ function AddProduct() {
           </Row>
         </Container>
       </section>
-    </>
+    </Helmet>
   );
 }
 

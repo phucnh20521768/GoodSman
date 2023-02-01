@@ -8,66 +8,76 @@ import categoryData from "../assets/data/category";
 import StarRatings from "react-star-ratings";
 import ProductList from "../components/UI/ProductList";
 import { useState, useEffect } from "react";
-import Enumerable from 'linq'
-import PriceSlider from '../components/UI/PriceSlider'
-
-function Products() {
-  const [products, setProducts] = useState(productData);
+import Enumerable from "linq";
+import PriceSlider from "../components/UI/PriceSlider";
+import UseGetData from "../database/UseGetData";
+function Products({ category }) {
+  const { data: productsData, loading } = UseGetData("products");
+  const [products, setProducts] = useState(productsData);
   const categories = categoryData;
 
   const [sort, setSort] = useState({ key: null, value: null });
   const [filterCategory, setCategory] = useState(null);
-  const [filterPrice, setRangePrice] = useState({ min: 0, max: Number.MAX_VALUE });
+  const [filterPrice, setRangePrice] = useState({
+    min: 0,
+    max: Number.MAX_VALUE,
+  });
   const [filterRating, setRating] = useState(0);
 
   const handleSort = (e) => {
-    const typeFilter = e.target.dataset['filter']
-    const valueFilter = e.target.value
-    setSort({ key: typeFilter, value: valueFilter })
-
-  }
+    const typeFilter = e.target.dataset["filter"];
+    const valueFilter = e.target.value;
+    setSort({ key: typeFilter, value: valueFilter });
+  };
 
   const handleFilterCategory = (e) => {
-    const typeFilter = e.target.dataset['filter']
-    setCategory(typeFilter)
-  }
+    const typeFilter = e.target.dataset["filter"];
+    setCategory(typeFilter);
+  };
 
   const handleFilterPrice = (e) => {
-    const min = parseFloat(document.getElementById('floatingInputFrom').value)
-    const max = parseFloat(document.getElementById('floatingInputTo').value)
-    setRangePrice({ min: isNaN(min) ? 0 : min, max: isNaN(max) ? Number.MAX_VALUE : max })
-  }
+    const min = parseFloat(document.getElementById("floatingInputFrom").value);
+    const max = parseFloat(document.getElementById("floatingInputTo").value);
+    setRangePrice({
+      min: isNaN(min) ? 0 : min,
+      max: isNaN(max) ? Number.MAX_VALUE : max,
+    });
+  };
 
   const handleFilterRating = (e) => {
-    const typeFilter = e.target.dataset['filter']
-    setRating(typeFilter)
-  }
+    const typeFilter = e.target.dataset["filter"];
+    setRating(typeFilter);
+  };
 
   const updateView = () => {
-    var filter = Enumerable.from(productData)
-      .where(item => filterCategory === null ? true : item.category === filterCategory)
-      .where(item => item.price >= filterPrice.min && item.price <= filterPrice.max)
-      .where(item => item.avgRating >= filterRating)
+    var filter = Enumerable.from(productsData)
+      .where((item) =>
+        filterCategory === null ? true : item.category === filterCategory
+      )
+      .where(
+        (item) => item.price >= filterPrice.min && item.price <= filterPrice.max
+      )
+      .where((item) => item.avgRating >= filterRating);
     switch (sort.key) {
       case "title":
-        if (sort.value === 'title-ascending')
-          filter = filter.orderBy(item => item.productName)
-        else if (sort.value === 'title-descending')
-          filter = filter.orderByDescending(item => item.productName)
+        if (sort.value === "title-ascending")
+          filter = filter.orderBy((item) => item.productName);
+        else if (sort.value === "title-descending")
+          filter = filter.orderByDescending((item) => item.productName);
         break;
       case "price":
-        if (sort.value === 'price-ascending')
-          filter = filter.orderBy(item => item.price)
-        else if (sort.value === 'price-descending')
-          filter = filter.orderByDescending(item => item.price)
+        if (sort.value === "price-ascending")
+          filter = filter.orderBy((item) => item.price);
+        else if (sort.value === "price-descending")
+          filter = filter.orderByDescending((item) => item.price);
         break;
       default:
         break;
     }
-    setProducts(filter.toArray())
-  }
+    setProducts(filter.toArray());
+  };
 
-  useEffect(updateView)
+  useEffect(updateView);
 
   return (
     <Helmet title={"Products"}>
@@ -93,7 +103,12 @@ function Products() {
                 <div>
                   <ul>
                     {categories.map((item, index) => (
-                      <li key={index} className="text-capitalize" onClick={handleFilterCategory} data-filter={item.categoryName}>
+                      <li
+                        key={index}
+                        className="text-capitalize"
+                        onClick={handleFilterCategory}
+                        data-filter={item.categoryName}
+                      >
                         {item.categoryName}
                       </li>
                     ))}
@@ -124,7 +139,10 @@ function Products() {
                         />
                       </div>
                       <div>
-                        <button className="btn btn-primary opacity-100 py-2 px-4" onClick={handleFilterPrice}>
+                        <button
+                          className="btn btn-primary opacity-100 py-2 px-4"
+                          onClick={handleFilterPrice}
+                        >
                           <p>Đi</p>
                         </button>
                       </div>
@@ -201,7 +219,11 @@ function Products() {
               </div>
               <div>
                 <Row className="my-2 g-3">
-                  <ProductList data={products} />
+                  {loading ? (
+                    <h5>Loading....</h5>
+                  ) : (
+                    <ProductList data={products} />
+                  )}
                 </Row>
               </div>
             </Col>

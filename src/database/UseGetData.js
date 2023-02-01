@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { firebaseFirestore } from './InstanceFiresbase'
-import { collection, getDocs } from 'firebase/firestore'
+import { collection, getDocs, onSnapshot } from 'firebase/firestore'
 import { useEffect } from 'react'
 import { async } from '@firebase/util'
 
@@ -8,16 +8,19 @@ function UseGetData(collectionName) {
 
     const [data, setData] = useState([])
     const collectionRef = collection(firebaseFirestore, collectionName)
-
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         const getData = async () => {
-            const data = await getDocs(collectionRef)
-            setData(data.docs.map(doc => ({ ...doc.data(), id: doc.id })))
+            await onSnapshot(collectionRef, (snapshot) => {
+                setData(snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })))
+                setLoading(false);
+            })
+
         }
 
         getData()
-    }, [collectionRef]);
-    return { data }
+    }, []);
+    return { data, loading }
 }
 
 export default UseGetData

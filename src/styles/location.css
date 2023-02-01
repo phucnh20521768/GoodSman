@@ -1,0 +1,16 @@
+.loca-img {
+    height: 200px;
+}
+
+.loca-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.loca-content {
+    text-align: center;
+}
+
+.loca-title {
+    color: var(--primary-color-dark);
+}

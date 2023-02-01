@@ -8,6 +8,8 @@ import ProductDetails from '../pages/ProductDetails'
 import Account from '../pages/Account'
 import Products from '../pages/Products'
 import About from '../pages/About'
+import Contact from '../pages/Contact'
+import Location from '../pages/Location'
 
 function Routers() {
   return (
@@ -20,6 +22,8 @@ function Routers() {
       <Route path='checkout' element={<Checkout />} />
       <Route path='products/:id' element={<ProductDetails />} />
       <Route path='account' element={<Account />} />
+      <Route path='contact' element={<Contact />} />
+      <Route path='location' element={<Location />} />
     </Routes>
   )
 }

@@ -10,7 +10,6 @@ import ProductList from "../components/UI/ProductList";
 import { useState, useEffect } from "react";
 import Enumerable from "linq";
 
-import PriceSlider from "../components/UI/PriceSlider";
 import UseGetData from "../database/UseGetData";
 function Products({ category }) {
   const { data: productsData, loading } = UseGetData("products");
@@ -47,7 +46,6 @@ function Products({ category }) {
   };
 
   const handleFilterRating = (e) => {
-
     const typeFilter = e.currentTarget.dataset["filter"];
     setRating(typeFilter);
   };

@@ -19,10 +19,6 @@ const nav_links = [
     display: "Sản phẩm",
   },
   {
-    path: "our-projects",
-    display: "Dự án",
-  },
-  {
     path: "contact",
     display: "Liên hệ",
   },

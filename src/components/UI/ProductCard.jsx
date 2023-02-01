@@ -5,6 +5,7 @@ import "../../styles/product_card.css";
 import { Link } from "react-router-dom";
 import colors from "../../assets/data/colorCard";
 import numeral from "numeral";
+import StarRatings from "react-star-ratings";
 
 import { toast } from "react-toastify";
 
@@ -57,6 +58,18 @@ function ProductCard({ item, index, isModifyWidth = { isModify: false } }) {
           <Card.Text className="product-item__des--cate fw-light">
             {item.category}
           </Card.Text>
+          <span>
+            <StarRatings
+              rating={item.avgRating}
+              starRatedColor="#ffd800"
+              numberOfStars={5}
+              name="rating"
+              starDimension="20px"
+              starSpacing="2px"
+              svgIconViewBox="0 0 24 24"
+              svgIconPath="M12 18.26l-7.053 3.948 1.575-7.928L.587 8.792l8.027-.952L12 .5l3.386 7.34 8.027.952-5.935 5.488 1.575 7.928z"
+            />
+          </span>
           <div className="product-item__bottom d-flex justify-content-between mt-4">
             <Card.Text className="product-item__des--value">
               {price.format("0,0[.]00")}đ

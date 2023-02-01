@@ -9,6 +9,11 @@ import Account from '../pages/Account'
 import Products from '../pages/Products'
 import About from '../pages/About'
 
+import AddProduct from '../admin/AddProduct'
+import AllProduct from '../admin/AllProduct'
+import ProtetedRoute from './ProtetedRoute'
+import Dashboard from '../admin/Dashboard'
+
 function Routers() {
   return (
     <Routes>
@@ -20,6 +25,7 @@ function Routers() {
       <Route path='checkout' element={<Checkout />} />
       <Route path='products/:id' element={<ProductDetails />} />
       <Route path='account' element={<Account />} />
+
     </Routes>
   )
 }

@@ -21,7 +21,7 @@ import ProductList from "../components/UI/ProductList";
 function ProductDetails() {
   const { id } = useParams();
   const product = products.find((item) => item.id === id);
-  const images = product.imgUrls.map((item) => {
+  const images = [product.imgThumb].map((item) => {
     return { original: item, thumbnail: item };
   });
   const relatedProduct = products

@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from 'firebase/firestore/lite';
+import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
@@ -10,6 +10,7 @@ const firebaseConfig = {
     messagingSenderId: "356149107049",
     appId: "1:356149107049:web:9d935466825c16ecc185f8"
 };
+
 
 let _firebaseApp = null
 let _firebaseFirestore = null
@@ -22,3 +23,4 @@ let firebaseFirestore = _firebaseFirestore == null ? (_firebaseFirestore = getFi
 let firebaseStorage = _firebaseStorage == null ? (_firebaseStorage = getStorage(firebaseApp)) : _firebaseStorage
 
 export { firebaseFirestore, firebaseStorage, firebaseApp };
+

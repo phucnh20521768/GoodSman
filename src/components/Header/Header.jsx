@@ -26,6 +26,10 @@ const nav_links = [
     path: "contact",
     display: "Liên hệ",
   },
+  {
+    path: "location",
+    display: "Địa chỉ",
+  },
 ];
 
 function Header() {
@@ -66,9 +70,8 @@ function Header() {
                       <NavLink
                         reloadDocument
                         key={index}
-                        className={(navClass) =>
-                          navClass.isActive ? "nav-link active" : "nav-link "
-                        }
+                        className={`nav-link ${(navClass) =>
+                          navClass.isActive ? "active" : ""}`}
                         to={item.path}
                       >
                         {item.display}

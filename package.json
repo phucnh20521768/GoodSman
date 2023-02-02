@@ -13,6 +13,7 @@
     "bootstrap": "^5.2.2",
     "chart.js": "^4.2.0",
     "firebase": "^9.14.0",
+    "font-awesome": "^4.7.0",
     "framer-motion": "^7.6.9",
     "linq": "^4.0.1",
     "numeral": "^2.0.6",
@@ -28,11 +29,13 @@
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
     "react-slider": "^2.0.4",
+    "react-slick": "^0.29.0",
     "react-star-ratings": "^2.3.0",
     "react-toastify": "^9.1.1",
     "redux": "^4.2.0",
     "remixicon": "^2.5.0",
     "styled-components": "^5.3.6",
+    "slick-carousel": "^1.8.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

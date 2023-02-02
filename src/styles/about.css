@@ -2,6 +2,8 @@
   padding-top: 1rem;
 }
 
+/* thay đổi dòng kẻ */
+
 .line-header,
 .line-content {
   width: 30%;
@@ -22,28 +24,45 @@
   background-color: var(--primary-color-dark);
 }
 
+/* căn phải dòng kẻ */
+
 .align-end {
   text-align: right;
   margin-left: auto;
 }
 
+/* căn đều cả đoạn văn */
 .text-justify {
   text-align: justify;
 }
+
+/* margin của thẻ h1 */
 
 .m-h1 {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
+/* margin cho ảnh */
+
 .m-img {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
+/* đổi con trỏ cho tiêu đề */
+
 .title {
   cursor: default;
 }
+
+/* hiệu ứng khi hover ảnh */
+
+.m-img:hover {
+  scale: 1.1;
+}
+
+/* hiệu ứng đổi màu tiêu đề */
 
 .title:hover {
   text-transform: uppercase;
@@ -100,9 +119,13 @@
   }
 }
 
+/* khoảng cách giữa các chữ đầu của đề mục */
+
 .left {
   margin-left: 8px;
 }
+
+/* hiệu ứng đề mục nhảy chữ */
 
 .span-animation {
   font-size: var(--heading-fontSize);

@@ -20,7 +20,9 @@
 }
 
 .contact-submit {
-    padding: 0.5rem 3rem !important;
+    border-radius: 0.5rem !important;
+    width: 200px;
+    padding: 1rem;
 }
 
 .error {

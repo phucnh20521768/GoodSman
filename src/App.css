@@ -40,7 +40,8 @@
 
 body {
   /* font-family: "Playfair Display", serif; */
-  font-family: "Merriweather", serif;
+  /* font-family: "Merriweather", serif; */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: var(--primary-color-dark);
   font-size: 1.15rem;
   min-width: 360px;

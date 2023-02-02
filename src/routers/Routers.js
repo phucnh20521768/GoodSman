@@ -10,6 +10,7 @@ import Products from '../pages/Products'
 import About from '../pages/About'
 import Contact from '../pages/Contact'
 import Location from '../pages/Location'
+import LocationDetail from '../pages/LocationDetail'
 
 function Routers() {
   return (
@@ -24,6 +25,7 @@ function Routers() {
       <Route path='account' element={<Account />} />
       <Route path='contact' element={<Contact />} />
       <Route path='location' element={<Location />} />
+      <Route path='location/:id' element={<LocationDetail />} />
     </Routes>
   )
 }

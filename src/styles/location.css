@@ -14,3 +14,18 @@
 .loca-title {
     color: var(--primary-color-dark);
 }
+
+.bread {
+    margin-left: 2rem;
+    margin-top: 2rem;
+}
+
+.line-loc {
+    width: 12rem;
+    height: 2px;
+    color: var(--primary-color-dark);
+    background-color: var(--primary-color-dark);
+    margin-left: 2rem;
+    opacity: unset;
+}
+

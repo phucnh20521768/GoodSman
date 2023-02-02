@@ -1,10 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 import "../../styles/location.css";
+import { Link } from "react-router-dom";
+
 
 function LocationCard({ item }) {
+  window.scrollTo(0,0);
   return (
-    <motion.div whileHover={{ scale: 1.01 }} >
+    <Link to={"/location/" + item.id}>
+      <motion.div whileHover={{ scale: 1.01 }} >
         <div className="loca-img">
         <img  src={item.imgURL} alt="" />
         </div>
@@ -13,11 +17,12 @@ function LocationCard({ item }) {
                 {item.title}
             </span>
             <br></br>
-            <span>
+            <span className="loca-title fw-bold">
                 {item.date}
             </span>
         </div>
     </motion.div>
+    </Link>
   );
 }
 

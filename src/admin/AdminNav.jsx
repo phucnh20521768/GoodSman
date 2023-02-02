@@ -17,6 +17,7 @@ import AllProduct from "../admin/AllProduct";
 import ProtetedRoute from "../routers/ProtetedRoute";
 import Dashboard from "../admin/Dashboard";
 import Users from "./Users";
+import Bill from "./Bill";
 
 const admin_nav_links = [
   {
@@ -27,7 +28,10 @@ const admin_nav_links = [
     path: "dashboard/all-products",
     display: "Quản lý sản phẩm",
   },
-
+  {
+    path: "dashboard/bills",
+    display: "Quản lý đơn hàng",
+  },
   {
     path: "dashboard/users",
     display: "Quản lý tài khoản",
@@ -248,6 +252,7 @@ function AdminNav({ route }) {
         <Routes>
           <Route path="/*" element={<ProtetedRoute />}>
             <Route path="dashboard" element={<Dashboard />} />
+            <Route path="dashboard/bills" element={<Bill />} />
             <Route path="dashboard/all-products" element={<AllProduct />} />
             <Route path="dashboard/add-products" element={<AddProduct />} />
             <Route path="dashboard/users" element={<Users />} />

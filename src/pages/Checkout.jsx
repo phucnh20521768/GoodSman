@@ -12,6 +12,8 @@ import Country from "../assets/data/local.js";
 import { toast } from "react-toastify";
 import { cartActions } from "../redux/slices/cartSlice";
 import { useDispatch } from "react-redux";
+import { CreateBill } from "../database/AddBill";
+import { Timestamp } from "firebase/firestore";
 
 function Checkout() {
   if (!hasLogin())
@@ -29,7 +31,7 @@ function Checkout() {
   const phoneNumber = loginInfo.phoneNumber
 
   const [methodShipping, setMethodShipping] = useState(1);
-  const [discountCode, setDiscountCode] = useState();
+  const [discountCode, setDiscountCode] = useState('');
 
   const RandomIdOrder = (length) => {
     let result = '';
@@ -53,16 +55,19 @@ function Checkout() {
       name: e.target.querySelector('input[name="nameCustomer"]').value,
       email: e.target.querySelector('input[name="emailCustomer"]').value,
       phone: e.target.querySelector('input[name="phoneCustomer"]').value,
-      province: province,
-      district: district,
-      ward: e.target.querySelector('select[name="wardShipping"]').value,
-      address: e.target.querySelector('input[name="addressShipping"]').value,
+      address: {
+        province: province,
+        district: district,
+        ward: e.target.querySelector('select[name="wardShipping"]').value,
+        address: e.target.querySelector('input[name="addressShipping"]').value,
+      },
       paymentMethod: Array.from(e.target.querySelectorAll('input[name="methodPayment"]')).find(item => item.checked)?.id,
       note: e.target.querySelector('textarea').value,
-      products: JSON.stringify(cartItems),
+      products: cartItems.map(item => item.id),
       totalPrice: totalPrice,
       methodShipping: methodShipping,
-      discountCode: discountCode
+      discountCode: discountCode,
+      dateCreate: Timestamp.now()
     }
 
     //check validation bill
@@ -71,7 +76,7 @@ function Checkout() {
       toast.error("Số điện thoại không hợp lệ")
       isValid = false
     }
-    if (bill.province === undefined || bill.district === undefined || bill.ward === "Phường/Xã" || bill.address === undefined) {
+    if (bill.address.province === undefined || bill.address.district === undefined || bill.address.ward === "Phường/Xã" || bill.address.address === undefined) {
       toast.warning("Vui lòng điền địa chỉ nhận hàng")
       isValid = false
     }
@@ -91,6 +96,7 @@ function Checkout() {
 
     if (isValid) {
       timeoutSubmit = true
+      await CreateBill(bill)
       toast.success(`Đã đặt hàng thành công\nMã đơn hàng: ${RandomIdOrder(6)}`, { duration: 5000 })
       setTimeout(() => {
         dispatch(

@@ -130,7 +130,7 @@ function Products() {
               <div className="filter-card filter-card--general mb-3">
                 <h5 className="filter-title">Bộ lọc</h5>
                 <div>
-                  <h6 className="sub-title">Giá tiền</h6>
+                  <h6 className="sub-title">Khoảng giá (đơn vị: triệu VNĐ)</h6>
                   <div className="d-flex align-items-center gap-2">
                     <div className="">
                       <input

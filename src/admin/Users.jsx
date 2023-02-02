@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 function Users() {
   const { data: usersData, loading } = UseGetData("users");
   const deleteUser = async (id) => {
-    await deleteDoc(doc(firebaseFirestore, "products", id));
+    await deleteDoc(doc(firebaseFirestore, "users", id));
     toast.success("Đã xóa người dùng");
   };
   return (

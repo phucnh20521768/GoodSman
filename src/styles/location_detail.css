@@ -30,6 +30,7 @@
   height: 100%;
   margin-left: auto;
   margin-right: auto;
+  object-fit: cover;
 }
 
 .slider-img1 img {
@@ -162,6 +163,9 @@
 @media (max-width: 768px) {
   .relate-item {
     width: 100% !important;
+  }
+  .slider-img1 {
+    height: 475px;
   }
 }
 

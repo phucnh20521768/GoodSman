@@ -41,7 +41,7 @@ function Header() {
             <Navbar key="lg" expand="lg" className="my-2">
               <Navbar.Brand href="#">
                 <div className="logo">
-                  <Nav.Link href="home">
+                  <Nav.Link href="/home">
                     <img src={logo} className="img-fluid" alt="logo" />
                   </Nav.Link>
                 </div>

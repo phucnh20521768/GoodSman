@@ -18,7 +18,14 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import ProductList from "../components/UI/ProductList";
 import products from "../assets/data/product";
 import { firebaseFirestore } from "../database/InstanceFiresbase";
-import { doc, deleteDoc, getDoc } from "@firebase/firestore";
+import {
+  doc,
+  deleteDoc,
+  getDoc,
+  setDoc,
+  arrayUnion,
+  updateDoc,
+} from "@firebase/firestore";
 import { useState } from "react";
 import { useEffect } from "react";
 import { async } from "@firebase/util";
@@ -26,7 +33,9 @@ import UseGetData from "../database/UseGetData";
 
 function ProductDetails() {
   const [product, setProduct] = useState({});
-
+  const [rating, setRating] = useState(0);
+  const [name, setName] = useState("");
+  const [comment, setComment] = useState("");
   const { data: productsData, loading } = UseGetData("products");
   const { id } = useParams();
 
@@ -61,6 +70,21 @@ function ProductDetails() {
       })
     );
     toast.success("Thêm thành công");
+  };
+
+  const AddRating = async (e) => {
+    e.preventDefault();
+    const arating = [...product.reviews?.map((item) => item.rating), rating];
+    const avgRating = arating.reduce((a, b) => a + b, 0) / arating.length;
+    await setDoc(
+      docRef,
+      {
+        reviews: arrayUnion({ name: name, rating: rating, text: comment }),
+        avgRating: avgRating,
+      },
+      { merge: true }
+    );
+    e.target.submit();
   };
   return (
     <Helmet title={product.productName}>
@@ -193,24 +217,44 @@ function ProductDetails() {
                   </ul>
                   <div className="review__form pt-3">
                     <h1 className="my-3">Đánh giá của bạn</h1>
-                    <Form>
+                    <Form onSubmit={AddRating}>
                       <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Control type="email" placeholder="Tên của bạn" />
+                        <Form.Control
+                          placeholder="Tên của bạn"
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          required
+                        />
                       </Form.Group>
-
+                      <StarRatings
+                        rating={rating}
+                        starRatedColor="#ffd800"
+                        starHoverColor="#ffd800"
+                        numberOfStars={5}
+                        name="rating"
+                        changeRating={(item) => setRating(item)}
+                        starDimension="38px"
+                        starSpacing="2px"
+                        svgIconViewBox="0 0 24 24"
+                        svgIconPath="M12 18.26l-7.053 3.948 1.575-7.928L.587 8.792l8.027-.952L12 .5l3.386 7.34 8.027.952-5.935 5.488 1.575 7.928z"
+                      />
                       <Form.Group
-                        className="mb-3"
+                        className="my-3"
                         controlId="formBasicPassword"
                       >
                         <Form.Control
                           as="textarea"
                           rows={5}
                           placeholder="Lời đánh giá"
+                          value={comment}
+                          onChange={(e) => setComment(e.target.value)}
+                          required
                         />
                       </Form.Group>
 
                       <motion.button
                         whileTap={{ scale: 1.2 }}
+                        type="submit"
                         className="btn btn-primary btn-lg opacity-100"
                       >
                         Gửi

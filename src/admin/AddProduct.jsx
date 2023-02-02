@@ -54,13 +54,8 @@ function AddProduct() {
               reviews: [
                 {
                   name: "Mina",
-                  rating: 4,
-                  text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-                },
-                {
-                  name: "Dio",
                   rating: 5,
-                  text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+                  text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
                 },
               ],
               avgRating: 5,

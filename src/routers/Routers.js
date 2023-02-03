@@ -29,8 +29,8 @@ function Routers() {
       <Route path='products/:id' element={<ProductDetails />} />
       <Route path='account' element={<Account />} />
       <Route path='contact' element={<Contact />} />
-      <Route path='location' element={<Location />} />
-      <Route path='location/:id' element={<LocationDetail />} />
+      <Route path='project' element={<Location />} />
+      <Route path='project/:id' element={<LocationDetail />} />
     </Routes>
   )
 }

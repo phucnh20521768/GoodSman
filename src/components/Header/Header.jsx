@@ -24,8 +24,8 @@ const nav_links = [
     display: "Liên hệ",
   },
   {
-    path: "location",
-    display: "Địa chỉ",
+    path: "project",
+    display: "Dự án",
   },
 ];
 
@@ -90,20 +90,55 @@ function Header() {
                     <i className="ri-shopping-cart-2-fill icon cursor-pointer"></i>
                   </NavLink>
                 </span>
-                {
-                  hasLogin() ?
-                    <>
-                      <div class="dropdown">
-                        <i className="ri-user-fill icon cursor-pointer dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                          <li><NavLink to="/account" activeclassname="active" className="dropdown-item">Tài khoản</NavLink></li>
-                          <li><NavLink to="/dashboard" activeclassname="active" className="dropdown-item">Dashboard</NavLink></li>
-                          <li><NavLink to="/account?logout=true" activeclassname="active" className="dropdown-item">Đăng xuất</NavLink></li>
-                        </ul>
-                      </div>
-                    </>
-                    : <NavLink to="/account" activeclassname="active"><i className="ri-user-fill icon cursor-pointer"></i></NavLink>
-                }
+                {hasLogin() ? (
+                  <>
+                    <div class="dropdown">
+                      <i
+                        className="ri-user-fill icon cursor-pointer dropdown-toggle"
+                        type="button"
+                        id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      ></i>
+                      <ul
+                        class="dropdown-menu"
+                        aria-labelledby="dropdownMenuButton1"
+                      >
+                        <li>
+                          <NavLink
+                            to="/account"
+                            activeclassname="active"
+                            className="dropdown-item"
+                          >
+                            Tài khoản
+                          </NavLink>
+                        </li>
+                        <li>
+                          <NavLink
+                            to="/dashboard"
+                            activeclassname="active"
+                            className="dropdown-item"
+                          >
+                            Dashboard
+                          </NavLink>
+                        </li>
+                        <li>
+                          <NavLink
+                            to="/account?logout=true"
+                            activeclassname="active"
+                            className="dropdown-item"
+                          >
+                            Đăng xuất
+                          </NavLink>
+                        </li>
+                      </ul>
+                    </div>
+                  </>
+                ) : (
+                  <NavLink to="/account" activeclassname="active">
+                    <i className="ri-user-fill icon cursor-pointer"></i>
+                  </NavLink>
+                )}
               </div>
             </Navbar>
           </Col>

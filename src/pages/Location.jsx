@@ -15,7 +15,7 @@ function Location() {
         <div>
           <Breadcrumb className="bread">
             <Breadcrumb.Item href="home">Trang chủ</Breadcrumb.Item>
-            <Breadcrumb.Item active>Địa chỉ</Breadcrumb.Item>
+            <Breadcrumb.Item active>Dự án</Breadcrumb.Item>
           </Breadcrumb>
         </div>
         <hr className="line-loc"></hr>

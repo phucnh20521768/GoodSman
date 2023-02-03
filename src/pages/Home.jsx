@@ -50,7 +50,7 @@ function Home() {
   }, [productsData]);
 
   return (
-    <Helmet title={"Home"}>
+    <Helmet title={"Trang chủ"}>
       <section className="hero-section position-relative">
         <Container>
           <div className="hero-section__bg"></div>

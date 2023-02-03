@@ -124,7 +124,7 @@ function Checkout() {
   }
 
   return (
-    <Helmet title="Cart">
+    <Helmet title="Thanh toán">
       <section className="cart">
         <form action="/" onSubmit={onSubmit}>
           <Container>

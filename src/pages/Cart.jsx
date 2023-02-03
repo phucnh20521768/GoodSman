@@ -97,7 +97,7 @@ function Cart() {
   };
 
   return (
-    <Helmet title="Cart">
+    <Helmet title="Giỏ hàng">
       <section className="cart">
         <Container>
           <Row className="">

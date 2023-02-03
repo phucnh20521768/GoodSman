@@ -51,7 +51,7 @@ function Contact() {
     isVerified = true;
   };
   return (
-    <Helmet title="Contact">
+    <Helmet title="Liên hệ">
       <Container>
         <Container id="content">
           <p className="fw-bold mb-5 pt-4">

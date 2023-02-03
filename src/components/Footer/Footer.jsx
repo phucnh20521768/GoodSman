@@ -81,7 +81,7 @@ function Footer() {
       <Container className="pt-5 pb-3">
         <Row>
           <Col sm="12" lg="4">
-            <div className="logo bg-white d-inline border rounded-2 p-2 pb-2">
+            <div className="logo bg-white d-inline border rounded-2 p-2">
               <Link to="home">
                 <img src={logo} alt="logo" />
               </Link>

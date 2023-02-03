@@ -87,7 +87,7 @@ function Products() {
   useEffect(updateView);
 
   return (
-    <Helmet title={"Products"}>
+    <Helmet title={"Sản phẩm"}>
       <section className="my-3">
         <Container>
           <Row>

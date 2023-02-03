@@ -10,7 +10,7 @@ import Helmet from "../components/Helmet/Helmet";
 
 function Location() {
   return (
-    <Helmet title="Location">
+    <Helmet title="Dự án">
       <Container>
         <div>
           <Breadcrumb className="bread">

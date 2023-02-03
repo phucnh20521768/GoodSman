@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import Helmet from "../components/Helmet/Helmet";
 function About() {
   return (
-    <Helmet title="About">
+    <Helmet title="Giới thiệu">
       <Container>
         <div className="d-flex justify-content-around align-items-center row">
           <div className="col-md-4">

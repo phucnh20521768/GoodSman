@@ -27,7 +27,7 @@ function Dashboard() {
   const { data: productsData, loading } = UseGetData("products");
   const { data: usersData } = UseGetData("users");
   return (
-    <Helmet title={"Products"}>
+    <Helmet title={"Thống kê"}>
       <section className="my-3">
         <Container fluid>
           <Row>

@@ -50,7 +50,7 @@ function Account() {
     return false;
   };
   return hasLogin() ? (
-    <Helmet title="Account">
+    <Helmet title="Tài khoản">
       <section className="account-section">
         <form
           action={redirect === null ? "/account" : redirect}

@@ -5,6 +5,7 @@ import "../styles/contact.css";
 import axios from "axios";
 import { useState } from "react";
 import Helmet from "../components/Helmet/Helmet";
+import { Breadcrumb } from "react-bootstrap";
 
 function Contact() {
   var isVerified = false;
@@ -54,6 +55,13 @@ function Contact() {
     <Helmet title="Liên hệ">
       <Container>
         <Container id="content">
+        <div>
+          <Breadcrumb className="bread_contact">
+            <Breadcrumb.Item href="home">Trang chủ</Breadcrumb.Item>
+            <Breadcrumb.Item active>Liên hệ</Breadcrumb.Item>
+          </Breadcrumb>
+        </div>
+        <hr className="line-con"></hr>
           <p className="fw-bold mb-5 pt-4">
             Để biết thêm thông tin về sản phẩm, giá cả và vận chuyển, xin vui
             lòng liên hệ với chúng tôi!

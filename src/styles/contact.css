@@ -31,3 +31,15 @@
     display: none;
     padding-top: 10px;
 }
+
+.bread_contact {
+    margin-top: 2rem;
+}
+
+.line-con {
+    width: 12rem;
+    height: 2px;
+    color: var(--primary-color-dark);
+    background-color: var(--primary-color-dark);
+    opacity: unset;
+}

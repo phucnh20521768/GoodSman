@@ -7,6 +7,7 @@ import { cartActions } from "../redux/slices/cartSlice";
 import { useSelector, useDispatch } from "react-redux";
 import numeral from "numeral";
 import Divide from "../components/UI/Divide";
+import { Breadcrumb } from "react-bootstrap";
 
 function ProductCart({ item }) {
   const [quanlity, setQuantity] = useState("");
@@ -98,6 +99,18 @@ function Cart() {
 
   return (
     <Helmet title="Giỏ hàng">
+      <section className="my-4">
+        <Container>
+          <Row>
+            <Col xs="auto">
+              <Breadcrumb>
+                <Breadcrumb.Item href="/cart">Cart</Breadcrumb.Item>
+              </Breadcrumb>
+              <Divide />
+            </Col>
+          </Row>
+        </Container>
+      </section>
       <section className="cart">
         <Container>
           <Row className="">

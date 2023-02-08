@@ -14,6 +14,7 @@ import { cartActions } from "../redux/slices/cartSlice";
 import { useDispatch } from "react-redux";
 import { CreateBill } from "../database/AddBill";
 import { Timestamp } from "firebase/firestore";
+import { Breadcrumb } from "react-bootstrap";
 
 function Checkout() {
   if (!hasLogin())
@@ -125,6 +126,19 @@ function Checkout() {
 
   return (
     <Helmet title="Thanh toán">
+      <section className="my-4">
+        <Container>
+          <Row>
+            <Col xs="auto">
+              <Breadcrumb>
+                <Breadcrumb.Item href="/cart">Cart</Breadcrumb.Item>
+                <Breadcrumb.Item href="/checkout">Checkout</Breadcrumb.Item>
+              </Breadcrumb>
+              <Divide />
+            </Col>
+          </Row>
+        </Container>
+      </section>
       <section className="cart">
         <form action="/" onSubmit={onSubmit}>
           <Container>

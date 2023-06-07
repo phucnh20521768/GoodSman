@@ -87,8 +87,8 @@ function LocationDetail() {
         <div>
           <Breadcrumb className="bread-detail">
             <Breadcrumb.Item href="/home">Trang chủ</Breadcrumb.Item>
-            <Breadcrumb.Item href="/location">Địa chỉ</Breadcrumb.Item>
-            <Breadcrumb.Item active>Chi tiết địa chỉ</Breadcrumb.Item>
+            <Breadcrumb.Item href="/location">Dự án</Breadcrumb.Item>
+            <Breadcrumb.Item active>Chi tiết dự án</Breadcrumb.Item>
           </Breadcrumb>
           <hr className="line-loc-detail"></hr>
         </div>

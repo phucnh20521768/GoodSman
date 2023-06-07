@@ -43,6 +43,7 @@ function Contact() {
         var x = document.getElementById("error");
         if (!isVerified.current) {
             x.style.display = "block";
+            e.preventDefault();
         } else {
             x.style.display = "none";
             submitBtn(e);
@@ -50,6 +51,8 @@ function Contact() {
     };
     var onChangeCaptcha = function () {
         isVerified.current = true;
+        var x = document.getElementById("error");
+        x.style.display = "none";
     };
     return (
         <Helmet title="Liên hệ">
@@ -160,7 +163,7 @@ function Contact() {
                             </div>
                         </div>
                         <ReCAPTCHA
-                            sitekey="6Lc9dwkkAAAAAI3GFpl7ONunDtz1-C3tHAeVWibW"
+                            sitekey="6LdmfHcmAAAAAIkg1veGGtx-3R8uVZx7ZYFjckOa"
                             onChange={onChangeCaptcha}
                         />
                         <span className="error" id="error">
